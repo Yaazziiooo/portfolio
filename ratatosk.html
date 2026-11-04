@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ratatosk - UI Programming by Yasmin Adas">
+    <title>Ratatosk | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .trailer-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .trailer-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>Ratatosk</h1>
+
+            <p class="project-subtitle">
+                UI Programmer · Unity · C#
+            </p>
+
+            <img
+                src="images/ratatosk.jpg"
+                alt="Ratatosk gameplay"
+                class="project-hero-image"
+            >
+
+            <div class="project-detail-content">
+
+                <!-- About the game -->
+                <section>
+                    <h2>About the Game</h2>
+
+                    <p>
+                        Ratatosk is a game where players collect
+                        nuts while avoiding obstacles and enemies,
+                        including trees and hostile squirrels.
+                    </p>
+
+                    <p>
+                        The game features two modes: Chill and
+                        Thrill, offering different gameplay
+                        experiences.
+                    </p>
+                </section>
+
+                <!-- Gameplay trailer -->
+                <section>
+                    <h2>Gameplay Trailer</h2>
+
+                    <div class="trailer-container">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/TZFOTIkZYZM"
+                            title="Ratatosk Gameplay Trailer"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </section>
+
+                <!-- My contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        As one of four programmers on the team,
+                        I was primarily responsible for UI
+                        implementation and also contributed
+                        to the game's day-to-night cycle.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>UI and Menu Systems</h3>
+                            <p>
+                                Implemented interactive menus
+                                using Unity's Canvas and UI
+                                Button components, including
+                                navigation and gameplay-related
+                                interface functionality.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Score-Based End Screens</h3>
+                            <p>
+                                Developed UI logic that displays
+                                different ending visuals based
+                                on the player's final score,
+                                using separate score ranges.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Game Over Interface</h3>
+                            <p>
+                                Implemented the Game Over
+                                interface for Thrill Mode,
+                                including Play Again and
+                                Main Menu buttons.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Audio Settings</h3>
+                            <p>
+                                Connected Unity's Audio Mixer
+                                to UI sliders, allowing players
+                                to adjust music and sound
+                                effects volume through the
+                                settings menu.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Day-to-Night Cycle</h3>
+                            <p>
+                                Contributed to a time-based
+                                lighting system that transitions
+                                between day and night,
+                                supporting the game's
+                                atmosphere and end-of-game
+                                sequence.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical highlights -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Audio Mixer Integration</h3>
+                    <p>
+                        One of my technical challenges was
+                        learning how to integrate Unity's
+                        Audio Mixer with UI controls.
+                    </p>
+
+                    <p>
+                        I implemented slider-based volume
+                        adjustments for different audio
+                        categories, allowing players to
+                        configure the sound through the
+                        settings interface.
+                    </p>
+
+                    <h3>Gameplay and UI Synchronization</h3>
+                    <p>
+                        The day-to-night cycle also required
+                        coordination between lighting changes
+                        and gameplay timing.
+                    </p>
+
+                    <p>
+                        I contributed to implementing the
+                        cycle and resolving timing issues
+                        around the end-of-game transition,
+                        helping create a smoother experience
+                        instead of an abrupt ending.
+                    </p>
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">UI Programming</span>
+                        <span class="tech-tag">Unity Canvas</span>
+                        <span class="tech-tag">Audio Mixer</span>
+                        <span class="tech-tag">UI Sliders</span>
+                        <span class="tech-tag">Day-Night Cycle</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

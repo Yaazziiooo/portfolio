@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chaotic Shroom Hunt - Unreal Engine C++ Gameplay Programming by Yasmin Adas">
+    <title>Chaotic Shroom Hunt | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .shroom-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            min-height: 300px;
+            aspect-ratio: 16 / 9;
+            padding: 30px;
+            background: linear-gradient(135deg, #202e2a, #385044);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .shroom-hero strong {
+            font-size: clamp(30px, 5vw, 54px);
+            line-height: 1.2;
+        }
+
+        .shroom-hero span {
+            color: #d0d2d6;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>Chaotic Shroom Hunt</h1>
+
+            <p class="project-subtitle">
+                Game Programmer · Unreal Engine 5 · C++
+            </p>
+
+            <div class="shroom-hero">
+                <span>UNREAL ENGINE 5 · C++</span>
+                <strong>Chaotic Shroom Hunt</strong>
+                <span>GAMEPLAY & SYSTEMS PROGRAMMING</span>
+            </div>
+
+            <div class="project-detail-content">
+
+                <!-- About -->
+                <section>
+                    <h2>About the Game</h2>
+
+                    <p>
+                        Chaotic Shroom Hunt is a third-person
+                        arcade game where players control
+                        a dragon and collect mushrooms
+                        while avoiding traps and hazards.
+                    </p>
+
+                    <p>
+                        The game features five levels with
+                        increasing difficulty, different
+                        pickup types and a time-limited
+                        scoring system.
+                    </p>
+
+                    <p>
+                        Developed in Unreal Engine 5 using
+                        C++, the project focuses on
+                        gameplay systems, level progression
+                        and reusable game architecture.
+                    </p>
+                </section>
+
+                <!-- Contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        I developed the core gameplay
+                        systems, including spawning,
+                        game states, scoring, health,
+                        timers and menu navigation.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>Gameplay Systems</h3>
+                            <p>
+                                Implemented scoring,
+                                health and timed gameplay,
+                                including level progression
+                                and win/loss conditions.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Spawn Manager & Pooling</h3>
+                            <p>
+                                Developed a spawn manager
+                                using reusable actor pools
+                                for mushrooms and other
+                                gameplay objects, reducing
+                                repeated spawning and
+                                destruction.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>ActionStack Architecture</h3>
+                            <p>
+                                Implemented a stack-based
+                                system for managing menu
+                                and gameplay states,
+                                including Main Menu,
+                                Gameplay, Pause, Game Over
+                                and Level Complete.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Level Progression</h3>
+                            <p>
+                                Developed logic for
+                                five levels with increasing
+                                score requirements,
+                                difficulty and gameplay
+                                challenges.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Gameplay HUD</h3>
+                            <p>
+                                Implemented UI elements
+                                for health, score and
+                                remaining time, including
+                                damage feedback and
+                                countdown effects.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Audio & Settings</h3>
+                            <p>
+                                Implemented gameplay
+                                audio feedback and
+                                settings functionality,
+                                including volume control.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical Highlights -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Object Pooling</h3>
+
+                    <p>
+                        The spawning system reuses
+                        gameplay actors instead of
+                        continuously creating and
+                        destroying them.
+                    </p>
+
+                    <p>
+                        This reduces runtime allocation
+                        overhead and provides a more
+                        predictable spawning process.
+                    </p>
+
+                    <h3>Stack-Based Game States</h3>
+
+                    <p>
+                        I implemented an ActionStack
+                        architecture to separate
+                        gameplay logic from menu
+                        navigation and state transitions.
+                    </p>
+
+                    <p>
+                        This structure allows the game
+                        to manage pause, gameplay,
+                        game-over and level-completion
+                        states through a consistent
+                        system.
+                    </p>
+
+                    <h3>Dynamic Difficulty</h3>
+
+                    <p>
+                        The game increases score
+                        requirements across five levels,
+                        with different combinations
+                        of normal pickups, traps
+                        and environmental hazards.
+                    </p>
+
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Gameplay Programming</span>
+                        <span class="tech-tag">Object Pooling</span>
+                        <span class="tech-tag">Spawn Management</span>
+                        <span class="tech-tag">ActionStack</span>
+                        <span class="tech-tag">State Management</span>
+                        <span class="tech-tag">Gameplay UI</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

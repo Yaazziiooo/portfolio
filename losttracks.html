@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LostTracks - Unity C# Gameplay Programming by Yasmin Adas">
+    <title>LostTracks | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .losttracks-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            min-height: 300px;
+            aspect-ratio: 16 / 9;
+            padding: 30px;
+            background: linear-gradient(135deg, #282331, #47344d);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .losttracks-hero strong {
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1.2;
+        }
+
+        .losttracks-hero span {
+            color: #d0d2d6;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>LostTracks</h1>
+
+            <p class="project-subtitle">
+                Solo Game Programmer · Unity · C#
+            </p>
+
+            <div class="losttracks-hero">
+                <span>UNITY · C# · SOLO PROJECT</span>
+                <strong>LostTracks</strong>
+                <span>GAMEPLAY & SYSTEMS PROGRAMMING</span>
+            </div>
+
+            <div class="project-detail-content">
+
+                <!-- About -->
+                <section>
+                    <h2>About the Game</h2>
+
+                    <p>
+                        LostTracks is a third-person exploration
+                        game set in a stylized town where music
+                        has disappeared.
+                    </p>
+
+                    <p>
+                        Players restore music by interacting
+                        with NPCs, completing challenges,
+                        collecting music tracks and delivering
+                        requested items.
+                    </p>
+
+                    <p>
+                        Developed as an individual Unity
+                        project, LostTracks allowed me to
+                        design and implement the complete
+                        gameplay architecture in C#.
+                    </p>
+                </section>
+
+                <!-- Contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        As the sole programmer, I designed
+                        and implemented the gameplay systems,
+                        interactions, challenges, UI,
+                        progression and audio management.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>Quest System</h3>
+                            <p>
+                                Developed an objective-based
+                                quest system supporting
+                                multiple quests, progression
+                                states and different
+                                objective types.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>NPC Interaction & Dialogue</h3>
+                            <p>
+                                Implemented an interaction
+                                system using IInteractable,
+                                allowing players to
+                                communicate with NPCs,
+                                collect items and activate
+                                challenges.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Inventory System</h3>
+                            <p>
+                                Built an inventory system for
+                                collecting and managing music
+                                tracks and items, with
+                                integration into NPC
+                                deliveries and quest
+                                objectives.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Three Gameplay Challenges</h3>
+                            <p>
+                                Implemented three different
+                                minigames: a timing challenge,
+                                a note collection challenge
+                                and a memory sequence
+                                challenge.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Event-Driven Architecture</h3>
+                            <p>
+                                Used ScriptableObject events
+                                to communicate gameplay
+                                updates between systems,
+                                reducing direct dependencies
+                                between components.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>ActionStack Menu System</h3>
+                            <p>
+                                Developed a stack-based
+                                menu architecture to manage
+                                gameplay, main menu, pause
+                                and settings states.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Audio Management</h3>
+                            <p>
+                                Implemented centralized
+                                music and sound effects
+                                management, including
+                                transitions between
+                                gameplay and challenge
+                                music using audio fades.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical Highlights -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Event-Driven Quest Progression</h3>
+
+                    <p>
+                        Quest progression is connected to
+                        gameplay events rather than relying
+                        entirely on direct communication
+                        between systems.
+                    </p>
+
+                    <p>
+                        When players complete challenges
+                        or deliver requested items, the
+                        relevant quest objectives are
+                        updated and the UI reflects the
+                        current progression.
+                    </p>
+
+                    <h3>Reusable Interaction Interface</h3>
+
+                    <p>
+                        I used the IInteractable interface
+                        to provide a consistent interaction
+                        structure for NPCs, collectibles
+                        and challenge activators.
+                    </p>
+
+                    <p>
+                        This allowed different gameplay
+                        objects to respond to the same
+                        player interaction system while
+                        maintaining their own behavior.
+                    </p>
+
+                    <h3>Stack-Based Game States</h3>
+
+                    <p>
+                        The ActionStack system manages
+                        transitions between gameplay
+                        and different menu states.
+                    </p>
+
+                    <p>
+                        Each action handles its own
+                        lifecycle, making it easier to
+                        control player movement, UI
+                        visibility and cursor behavior
+                        during transitions.
+                    </p>
+
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Gameplay Programming</span>
+                        <span class="tech-tag">Quest Systems</span>
+                        <span class="tech-tag">Inventory</span>
+                        <span class="tech-tag">ScriptableObjects</span>
+                        <span class="tech-tag">Event-Driven Architecture</span>
+                        <span class="tech-tag">State Management</span>
+                        <span class="tech-tag">Audio Mixer</span>
+                        <span class="tech-tag">UI Programming</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

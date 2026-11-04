@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ok'Rhams Creation - UI Programming by Yasmin Adas">
+    <title>Ok'Rhams Creation | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .trailer-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .trailer-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>Ok'Rhams Creation</h1>
+
+            <p class="project-subtitle">
+                UI Programmer · Unreal Engine 5 · Blueprints
+            </p>
+
+            <img
+                src="images/okrhamscreation.webp"
+                alt="Ok'Rhams Creation gameplay"
+                class="project-hero-image"
+            >
+
+            <div class="project-detail-content">
+
+                <!-- About -->
+                <section>
+                    <h2>About the Game</h2>
+                    <p>
+                        Ok'Rhams Creation is a first-person
+                        puzzle-action game set inside a dark
+                        and mysterious cathedral.
+                    </p>
+                    <p>
+                        Players explore the environment,
+                        collect artifacts, avoid dangers
+                        and activate ancient systems to
+                        progress through the game.
+                    </p>
+                </section>
+
+                <!-- Trailer -->
+                <section>
+                    <h2>Gameplay Trailer</h2>
+
+                    <div class="trailer-container">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/mvrgbe3kfcw"
+                            title="Ok'Rhams Creation Gameplay Trailer"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </section>
+
+                <!-- Contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        I was responsible for implementing
+                        the game's entire user interface
+                        using Unreal Engine 5 Blueprints,
+                        including menus, interaction prompts,
+                        inventory feedback and gameplay UI.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>Interaction Prompt System</h3>
+                            <p>
+                                Implemented a trigger-based
+                                interaction system that
+                                displays contextual prompts
+                                when players approach
+                                interactable objects.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Menu Systems</h3>
+                            <p>
+                                Built the main menu, pause
+                                menu and death menu using
+                                Blueprint, including button
+                                functionality and game
+                                state transitions.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Input and Cursor Handling</h3>
+                            <p>
+                                Implemented input mode
+                                switching and mouse cursor
+                                visibility to support
+                                navigation between menus
+                                and gameplay.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Inventory Feedback</h3>
+                            <p>
+                                Connected inventory-related
+                                gameplay events to UI
+                                updates, providing visual
+                                feedback when players
+                                interacted with or
+                                collected objects.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Reusable Blueprint Events</h3>
+                            <p>
+                                Structured UI logic using
+                                reusable Blueprint events
+                                and configurable variables,
+                                allowing other developers
+                                to trigger interface
+                                updates from their systems.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical highlights -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Blueprint-Based UI Architecture</h3>
+                    <p>
+                        All UI functionality was implemented
+                        using Unreal Engine's visual
+                        scripting system rather than C++.
+                    </p>
+                    <p>
+                        I used Blueprint nodes such as
+                        Create Widget, Add to Viewport,
+                        Set Visibility and Remove from Parent
+                        to manage interface creation,
+                        updates and removal.
+                    </p>
+
+                    <h3>Gameplay and UI Integration</h3>
+                    <p>
+                        Interaction prompts were activated
+                        through trigger volumes, allowing
+                        UI elements to respond to player
+                        proximity and gameplay events.
+                    </p>
+                    <p>
+                        I also worked with input modes and
+                        mouse cursor control to make
+                        transitions between menus and
+                        gameplay function correctly.
+                    </p>
+
+                    <h3>Modular UI Design</h3>
+                    <p>
+                        I exposed reusable Blueprint events
+                        so that other team members could
+                        connect their gameplay systems to
+                        the UI without modifying the
+                        underlying interface logic.
+                    </p>
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">Blueprints</span>
+                        <span class="tech-tag">UI Programming</span>
+                        <span class="tech-tag">UMG Widgets</span>
+                        <span class="tech-tag">Input Handling</span>
+                        <span class="tech-tag">Event-Driven UI</span>
+                        <span class="tech-tag">Gameplay Integration</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

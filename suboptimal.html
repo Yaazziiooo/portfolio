@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sub-Optimal - Gameplay and AI Programming by Yasmin Adas">
+    <title>Sub-Optimal | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .trailer-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .trailer-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>Sub-Optimal</h1>
+
+            <p class="project-subtitle">
+                Gameplay & AI Programmer · Unreal Engine 5 · C++
+            </p>
+
+            <div class="project-awards">
+                <p>🏆 Winner – Best Co-op / Multiplayer Game</p>
+                <p>Nominated – Best Design</p>
+                <p>Nominated – Game of the Year</p>
+            </div>
+
+            <img
+                src="images/suboptimal.jpg"
+                alt="Sub-Optimal gameplay"
+                class="project-hero-image"
+            >
+
+            <div class="project-detail-content">
+
+                <!-- About -->
+                <section>
+                    <h2>About the Game</h2>
+                    <p>
+                        Sub-Optimal is a lighthearted online
+                        multiplayer game where divers navigate
+                        underwater hazards and hostile sea
+                        creatures while searching for treasure.
+                    </p>
+                    <p>
+                        Developed in Unreal Engine 5, the game
+                        combines cooperative gameplay with
+                        different enemy behaviors and dynamic
+                        underwater challenges.
+                    </p>
+                </section>
+
+                <!-- Trailer -->
+                <section>
+                    <h2>Gameplay Trailer</h2>
+
+                    <div class="trailer-container">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/SMASByXMQdw"
+                            title="Sub-Optimal Gameplay Trailer"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </section>
+
+                <!-- Contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        As a Gameplay & AI Programmer, I focused
+                        on developing enemy behaviors, damage
+                        systems, and networked gameplay
+                        functionality using C++.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>Enemy AI Systems</h3>
+                            <p>
+                                Designed and implemented AI
+                                behaviors for sharks, squids,
+                                and jellyfish, including
+                                patrol, detection, and attack
+                                mechanics.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Finite State Machine</h3>
+                            <p>
+                                Developed a state-based AI
+                                system for the shark, handling
+                                transitions between patrolling,
+                                chasing, attacking, and
+                                returning to patrol.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Spline-Based Movement</h3>
+                            <p>
+                                Implemented enemy patrol
+                                movement using Unreal Engine's
+                                USplineComponent to support
+                                smooth movement along
+                                configurable paths.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Damage Systems</h3>
+                            <p>
+                                Developed gameplay damage
+                                functionality, including
+                                timed damage behavior for
+                                jellyfish encounters.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Multiplayer Replication</h3>
+                            <p>
+                                Implemented server-authoritative
+                                AI behavior and replicated
+                                gameplay functionality to
+                                synchronize enemy interactions
+                                across connected clients.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Modular Enemy Architecture</h3>
+                            <p>
+                                Built a reusable AEnemyBase
+                                class for shared functionality
+                                such as health and replication.
+                                This provided a common
+                                foundation for different enemy
+                                types.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical Deep Dive -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Server-Authoritative AI</h3>
+                    <p>
+                        One of the main challenges was
+                        maintaining consistent enemy behavior
+                        in an online multiplayer environment.
+                    </p>
+                    <p>
+                        I used Unreal Engine's authority checks
+                        and replication framework to keep AI
+                        behavior synchronized between the
+                        server and connected clients.
+                        Debugging replication issues helped
+                        me improve the reliability of the
+                        enemy systems.
+                    </p>
+
+                    <h3>Reusable AI Architecture</h3>
+                    <p>
+                        To avoid duplicating functionality,
+                        I structured the enemy classes around
+                        a shared AEnemyBase implementation.
+                        Common features such as health and
+                        replication could be reused, while
+                        individual enemies implemented
+                        their own behaviors.
+                    </p>
+
+                    <p>
+                        This approach improved consistency
+                        and made enemy configurations easier
+                        to adjust during development.
+                    </p>
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Gameplay Programming</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Finite State Machines</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Replication</span>
+                        <span class="tech-tag">USplineComponent</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

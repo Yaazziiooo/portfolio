@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Last Flame - Game Programming by Yasmin Adas">
+    <title>The Last Flame | Yasmin Adas</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .trailer-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .trailer-container iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contribution-list {
+            display: grid;
+            gap: 22px;
+        }
+
+        .contribution-item {
+            padding: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contribution-item h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .contribution-item p {
+            margin: 0;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 13px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--accent);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html#home">Yasmin Adas</a>
+
+            <div>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail">
+
+            <a class="back-link" href="index.html#projects">
+                ← Back to Projects
+            </a>
+
+            <h1>The Last Flame</h1>
+
+            <p class="project-subtitle">
+                Game Programmer · Unity · C#
+            </p>
+
+            <div class="project-awards">
+                <p>Nominated – Best Narrative, Futuregames Awards</p>
+            </div>
+
+            <img
+                src="images/thelastflame.png"
+                alt="The Last Flame gameplay"
+                class="project-hero-image"
+            >
+
+            <div class="project-detail-content">
+
+                <!-- About -->
+                <section>
+                    <h2>About the Game</h2>
+                    <p>
+                        The Last Flame is a story-driven
+                        survival and exploration game set
+                        in a frozen, dying world.
+                    </p>
+                    <p>
+                        Players take on the role of Aurelia,
+                        a mystical fox spirit of fire,
+                        navigating a desolate landscape
+                        while struggling to keep her flame
+                        alive.
+                    </p>
+                </section>
+
+                <!-- Gameplay video -->
+                <section>
+                    <h2>Gameplay Video</h2>
+
+                    <div class="trailer-container">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/nUDnp9h0c_w"
+                            title="The Last Flame Gameplay Video"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </section>
+
+                <!-- Contributions -->
+                <section>
+                    <h2>My Contributions</h2>
+
+                    <p>
+                        My responsibilities focused on
+                        UI programming and input systems,
+                        creating functional menus,
+                        gameplay interfaces and adaptable
+                        controls using Unity and C#.
+                    </p>
+
+                    <div class="contribution-list">
+
+                        <div class="contribution-item">
+                            <h3>UI and Menu Systems</h3>
+                            <p>
+                                Implemented interactive menus,
+                                settings and gameplay UI
+                                components using Unity's
+                                UI system and C#.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Gameplay HUD</h3>
+                            <p>
+                                Developed interface elements
+                                including health bars,
+                                score counters and
+                                interactive icons, with
+                                dynamic updates linked
+                                to gameplay.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Unity Input System</h3>
+                            <p>
+                                Implemented input handling
+                                for keyboard and controller,
+                                supporting menu navigation
+                                and gameplay interactions.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Key Rebinding</h3>
+                            <p>
+                                Implemented configurable
+                                key bindings through Unity's
+                                Input System, giving
+                                players more flexibility
+                                over their controls.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Responsive UI</h3>
+                            <p>
+                                Worked on adapting interface
+                                elements to different
+                                screen sizes while keeping
+                                the UI functional and
+                                visually consistent.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical highlights -->
+                <section>
+                    <h2>Technical Highlights</h2>
+
+                    <h3>Flexible Input Handling</h3>
+                    <p>
+                        I worked with Unity's Input System
+                        to support both keyboard and
+                        controller input.
+                    </p>
+                    <p>
+                        The system included key rebinding
+                        functionality, allowing players
+                        to customize their controls and
+                        providing a more flexible
+                        interaction experience.
+                    </p>
+
+                    <h3>Gameplay UI Integration</h3>
+                    <p>
+                        A key part of my work involved
+                        connecting UI elements to gameplay
+                        systems so that information such
+                        as health and score could update
+                        dynamically.
+                    </p>
+                    <p>
+                        I also worked closely with designers
+                        and programmers to align the
+                        interface with the game's
+                        visual style and gameplay needs.
+                    </p>
+                </section>
+
+                <!-- Technologies -->
+                <section>
+                    <h2>Technologies</h2>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">UI Programming</span>
+                        <span class="tech-tag">Unity Input System</span>
+                        <span class="tech-tag">Key Rebinding</span>
+                        <span class="tech-tag">Controller Support</span>
+                        <span class="tech-tag">Gameplay HUD</span>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
