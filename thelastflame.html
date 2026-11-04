@@ -58,6 +58,40 @@
             color: var(--accent);
             font-size: 13px;
         }
+
+        /* Next project navigation */
+        .next-project {
+            display: block;
+            margin: 45px 0 20px;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .next-project:hover,
+        .next-project:focus-visible {
+            border-color: var(--accent);
+        }
+
+        .next-project span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .next-project strong {
+            color: var(--text);
+            font-size: 22px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .next-project {
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -253,6 +287,13 @@
                 </section>
 
             </div>
+
+            <!-- Next Project -->
+            <a class="next-project" href="ratatosk.html">
+                <span>NEXT PROJECT →</span>
+                <strong>Ratatosk</strong>
+            </a>
+
         </section>
     </main>
 </body>

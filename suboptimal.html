@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sub-Optimal - Gameplay and AI Programming by Yasmin Adas">
-    <title>Sub-Optimal | Yasmin Adas</title>
+    <meta name="description" content="SUBOPTIMAL - Gameplay and AI Programming by Yasmin Adas">
+    <title>SUBOPTIMAL | Yasmin Adas</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -58,6 +58,40 @@
             color: var(--accent);
             font-size: 13px;
         }
+
+        /* Next project navigation */
+        .next-project {
+            display: block;
+            margin: 45px 0 20px;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .next-project:hover,
+        .next-project:focus-visible {
+            border-color: var(--accent);
+        }
+
+        .next-project span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .next-project strong {
+            color: var(--text);
+            font-size: 22px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .next-project {
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -81,21 +115,22 @@
                 ← Back to Projects
             </a>
 
-            <h1>Sub-Optimal</h1>
+            <h1>SUBOPTIMAL</h1>
 
             <p class="project-subtitle">
                 Gameplay & AI Programmer · Unreal Engine 5 · C++
             </p>
 
             <div class="project-awards">
-                <p>🏆 Winner – Best Co-op / Multiplayer Game</p>
-                <p>Nominated – Best Design</p>
-                <p>Nominated – Game of the Year</p>
+                <p>🏆 Winner – Best Co-op / Multiplayer Game · Futuregames Awards 2026</p>
+                <p>Nominated – Best Design · Futuregames Awards 2026</p>
+                <p>Nominated – Game of the Year · Futuregames Awards 2026</p>
+                <p>Nominated – Best Technology · Swedish Game Awards, New Talent 2026</p>
             </div>
 
             <img
                 src="images/suboptimal.jpg"
-                alt="Sub-Optimal gameplay"
+                alt="SUBOPTIMAL artwork"
                 class="project-hero-image"
             >
 
@@ -105,7 +140,7 @@
                 <section>
                     <h2>About the Game</h2>
                     <p>
-                        Sub-Optimal is a lighthearted online
+                        SUBOPTIMAL is a lighthearted online
                         multiplayer game where divers navigate
                         underwater hazards and hostile sea
                         creatures while searching for treasure.
@@ -125,7 +160,7 @@
                     <div class="trailer-container">
                         <iframe
                             src="https://www.youtube-nocookie.com/embed/SMASByXMQdw"
-                            title="Sub-Optimal Gameplay Trailer"
+                            title="SUBOPTIMAL Gameplay Trailer"
                             loading="lazy"
                             referrerpolicy="strict-origin-when-cross-origin"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -271,6 +306,13 @@
                 </section>
 
             </div>
+
+            <!-- Next Project -->
+            <a class="next-project" href="losttracks.html">
+                <span>NEXT PROJECT →</span>
+                <strong>LostTracks</strong>
+            </a>
+
         </section>
     </main>
 </body>

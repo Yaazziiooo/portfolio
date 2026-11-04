@@ -69,6 +69,40 @@
             color: var(--accent);
             font-size: 13px;
         }
+
+        /* Next project navigation */
+        .next-project {
+            display: block;
+            margin: 45px 0 20px;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .next-project:hover,
+        .next-project:focus-visible {
+            border-color: var(--accent);
+        }
+
+        .next-project span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .next-project strong {
+            color: var(--text);
+            font-size: 22px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .next-project {
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -159,8 +193,7 @@
                             <h3>NPC Interaction & Dialogue</h3>
                             <p>
                                 Implemented an interaction
-                                system using IInteractable,
-                                allowing players to
+                                system allowing players to
                                 communicate with NPCs,
                                 collect items and activate
                                 challenges.
@@ -193,11 +226,10 @@
                         <div class="contribution-item">
                             <h3>Event-Driven Architecture</h3>
                             <p>
-                                Used ScriptableObject events
-                                to communicate gameplay
-                                updates between systems,
-                                reducing direct dependencies
-                                between components.
+                                Used event-based communication
+                                to coordinate gameplay updates
+                                between systems, reducing
+                                unnecessary dependencies.
                             </p>
                         </div>
 
@@ -214,12 +246,11 @@
                         <div class="contribution-item">
                             <h3>Audio Management</h3>
                             <p>
-                                Implemented centralized
-                                music and sound effects
-                                management, including
-                                transitions between
-                                gameplay and challenge
-                                music using audio fades.
+                                Implemented music and sound
+                                effects management, including
+                                transitions between gameplay
+                                and challenge music using
+                                audio fades.
                             </p>
                         </div>
 
@@ -247,20 +278,19 @@
                         current progression.
                     </p>
 
-                    <h3>Reusable Interaction Interface</h3>
+                    <h3>Reusable Gameplay Interactions</h3>
 
                     <p>
-                        I used the IInteractable interface
-                        to provide a consistent interaction
-                        structure for NPCs, collectibles
-                        and challenge activators.
+                        I developed a reusable interaction
+                        structure supporting different
+                        gameplay objects and NPCs.
                     </p>
 
                     <p>
-                        This allowed different gameplay
-                        objects to respond to the same
-                        player interaction system while
-                        maintaining their own behavior.
+                        This allowed different objects
+                        to respond to player interactions
+                        while maintaining their own
+                        behavior.
                     </p>
 
                     <h3>Stack-Based Game States</h3>
@@ -272,13 +302,10 @@
                     </p>
 
                     <p>
-                        Each action handles its own
-                        lifecycle, making it easier to
-                        control player movement, UI
-                        visibility and cursor behavior
+                        This structure makes it easier to
+                        control gameplay and UI behavior
                         during transitions.
                     </p>
-
                 </section>
 
                 <!-- Technologies -->
@@ -291,15 +318,21 @@
                         <span class="tech-tag">Gameplay Programming</span>
                         <span class="tech-tag">Quest Systems</span>
                         <span class="tech-tag">Inventory</span>
-                        <span class="tech-tag">ScriptableObjects</span>
                         <span class="tech-tag">Event-Driven Architecture</span>
                         <span class="tech-tag">State Management</span>
-                        <span class="tech-tag">Audio Mixer</span>
+                        <span class="tech-tag">Audio Management</span>
                         <span class="tech-tag">UI Programming</span>
                     </div>
                 </section>
 
             </div>
+
+            <!-- Next Project -->
+            <a class="next-project" href="chaoticshroomhunt.html">
+                <span>NEXT PROJECT →</span>
+                <strong>Chaotic Shroom Hunt</strong>
+            </a>
+
         </section>
     </main>
 </body>

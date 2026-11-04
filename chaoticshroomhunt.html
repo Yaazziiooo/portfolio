@@ -69,6 +69,40 @@
             color: var(--accent);
             font-size: 13px;
         }
+
+        /* Next project navigation */
+        .next-project {
+            display: block;
+            margin: 45px 0 20px;
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .next-project:hover,
+        .next-project:focus-visible {
+            border-color: var(--accent);
+        }
+
+        .next-project span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .next-project strong {
+            color: var(--text);
+            font-size: 22px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .next-project {
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -219,47 +253,27 @@
                     <h2>Technical Highlights</h2>
 
                     <h3>Object Pooling</h3>
-
                     <p>
-                        The spawning system reuses
-                        gameplay actors instead of
-                        continuously creating and
-                        destroying them.
-                    </p>
-
-                    <p>
-                        This reduces runtime allocation
-                        overhead and provides a more
-                        predictable spawning process.
+                        The spawning system reuses gameplay
+                        actors instead of continuously
+                        creating and destroying them.
+                        This helps reduce runtime overhead.
                     </p>
 
                     <h3>Stack-Based Game States</h3>
-
                     <p>
                         I implemented an ActionStack
-                        architecture to separate
-                        gameplay logic from menu
-                        navigation and state transitions.
+                        architecture to separate gameplay
+                        logic from menu navigation
+                        and state transitions.
                     </p>
 
+                    <h3>Level Progression</h3>
                     <p>
-                        This structure allows the game
-                        to manage pause, gameplay,
-                        game-over and level-completion
-                        states through a consistent
-                        system.
+                        The game uses a level-based
+                        progression system with increasing
+                        difficulty and gameplay challenges.
                     </p>
-
-                    <h3>Dynamic Difficulty</h3>
-
-                    <p>
-                        The game increases score
-                        requirements across five levels,
-                        with different combinations
-                        of normal pickups, traps
-                        and environmental hazards.
-                    </p>
-
                 </section>
 
                 <!-- Technologies -->
@@ -279,6 +293,13 @@
                 </section>
 
             </div>
+
+            <!-- Next Project -->
+            <a class="next-project" href="thelastflame.html">
+                <span>NEXT PROJECT →</span>
+                <strong>The Last Flame</strong>
+            </a>
+
         </section>
     </main>
 </body>
