@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SUBOPTIMAL - Gameplay and AI Programming by Yasmin Adas">
+    <meta name="description" content="SUBOPTIMAL - Gameplay and AI programming by Yasmin Adas">
     <title>SUBOPTIMAL | Yasmin Adas</title>
     <link rel="stylesheet" href="style.css">
 
@@ -26,40 +26,51 @@
 
         .contribution-list {
             display: grid;
-            gap: 22px;
+            gap: 16px;
         }
 
         .contribution-item {
-            padding: 22px;
+            padding: 18px 22px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 8px;
         }
 
         .contribution-item h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
+            margin: 0 0 6px;
+            font-size: 18px;
         }
 
         .contribution-item p {
             margin: 0;
         }
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .code-example {
+            margin-top: 24px;
         }
 
-        .tech-tag {
-            padding: 8px 13px;
+        .code-example pre {
+            margin: 16px 0 10px;
+            padding: 20px;
+            background: #191b1e;
             border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--accent);
+            border-radius: 8px;
+            overflow-x: auto;
+            tab-size: 4;
+        }
+
+        .code-example code {
+            color: #e2e5e8;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .code-caption {
+            color: #aeb4bb;
             font-size: 13px;
         }
 
-        /* Next project navigation */
         .next-project {
             display: block;
             margin: 45px 0 20px;
@@ -67,6 +78,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 8px;
+            text-decoration: none;
             transition: border-color 0.2s ease;
         }
 
@@ -78,12 +90,12 @@
         .next-project span {
             display: block;
             margin-bottom: 8px;
-            color: var(--muted);
+            color: #aeb4bb;
             font-size: 13px;
         }
 
         .next-project strong {
-            color: var(--text);
+            color: #f0f0f0;
             font-size: 22px;
         }
 
@@ -122,10 +134,20 @@
             </p>
 
             <div class="project-awards">
-                <p>🏆 Winner – Best Co-op / Multiplayer Game · Futuregames Awards 2026</p>
-                <p>Nominated – Best Design · Futuregames Awards 2026</p>
-                <p>Nominated – Game of the Year · Futuregames Awards 2026</p>
-                <p>Nominated – Best Technology · Swedish Game Awards, New Talent 2026</p>
+                <p>
+                    🏆 Winner – Best Co-op / Multiplayer Game ·
+                    Futuregames Awards 2026
+                </p>
+                <p>
+                    Nominated – Best Design · Futuregames Awards 2026
+                </p>
+                <p>
+                    Nominated – Game of the Year · Futuregames Awards 2026
+                </p>
+                <p>
+                    Nominated – Best Technology ·
+                    Swedish Game Awards, New Talent 2026
+                </p>
             </div>
 
             <img
@@ -139,17 +161,12 @@
                 <!-- About -->
                 <section>
                     <h2>About the Game</h2>
+
                     <p>
                         SUBOPTIMAL is a lighthearted online
                         multiplayer game where divers navigate
                         underwater hazards and hostile sea
                         creatures while searching for treasure.
-                    </p>
-                    <p>
-                        Developed in Unreal Engine 5, the game
-                        combines cooperative gameplay with
-                        different enemy behaviors and dynamic
-                        underwater challenges.
                     </p>
                 </section>
 
@@ -174,143 +191,256 @@
                     <h2>My Contributions</h2>
 
                     <p>
-                        As a Gameplay & AI Programmer, I focused
-                        on developing enemy behaviors, damage
-                        systems, and networked gameplay
-                        functionality using C++.
+                        I wrote the enemy behaviors and several
+                        underwater hazards in C++.
                     </p>
 
                     <div class="contribution-list">
 
                         <div class="contribution-item">
-                            <h3>Enemy AI Systems</h3>
+                            <h3>Shark AI</h3>
                             <p>
-                                Designed and implemented AI
-                                behaviors for sharks, squids,
-                                and jellyfish, including
-                                patrol, detection, and attack
-                                mechanics.
+                                A five-state AI system where the
+                                shark patrols, chases players,
+                                attacks, cools down and returns
+                                to its route.
                             </p>
                         </div>
 
                         <div class="contribution-item">
-                            <h3>Finite State Machine</h3>
+                            <h3>Jellyfish</h3>
                             <p>
-                                Developed a state-based AI
-                                system for the shark, handling
-                                transitions between patrolling,
-                                chasing, attacking, and
-                                returning to patrol.
+                                Spline-based movement and
+                                timer-controlled damage over
+                                time when a diver encounters
+                                a jellyfish.
                             </p>
                         </div>
 
                         <div class="contribution-item">
-                            <h3>Spline-Based Movement</h3>
+                            <h3>Squid</h3>
                             <p>
-                                Implemented enemy patrol
-                                movement using Unreal Engine's
-                                USplineComponent to support
-                                smooth movement along
-                                configurable paths.
+                                Spline movement and an ink
+                                attack that covers part of
+                                the submarine when it gets
+                                close enough.
                             </p>
                         </div>
 
                         <div class="contribution-item">
-                            <h3>Damage Systems</h3>
+                            <h3>Algae Hazard</h3>
                             <p>
-                                Developed gameplay damage
-                                functionality, including
-                                timed damage behavior for
-                                jellyfish encounters.
+                                Algae spawn around the
+                                submarine's propeller when
+                                it enters an algae area.
                             </p>
                         </div>
 
                         <div class="contribution-item">
-                            <h3>Multiplayer Replication</h3>
+                            <h3>Ping System</h3>
                             <p>
-                                Implemented server-authoritative
-                                AI behavior and replicated
-                                gameplay functionality to
-                                synchronize enemy interactions
-                                across connected clients.
+                                Players can mark locations
+                                using a line trace from
+                                their camera, with a limit
+                                on how many pings they
+                                can place before a cooldown.
                             </p>
                         </div>
 
                         <div class="contribution-item">
-                            <h3>Modular Enemy Architecture</h3>
+                            <h3>Patrol Paths</h3>
                             <p>
-                                Built a reusable AEnemyBase
-                                class for shared functionality
-                                such as health and replication.
-                                This provided a common
-                                foundation for different enemy
-                                types.
+                                Created a PatrolPath actor
+                                using Unreal Engine splines
+                                to define routes for
+                                underwater enemies.
+                            </p>
+                        </div>
+
+                        <div class="contribution-item">
+                            <h3>Networking</h3>
+                            <p>
+                                Implemented server-side
+                                shark AI decisions and
+                                damage handling, replicated
+                                gameplay state and multicast
+                                audio effects.
                             </p>
                         </div>
 
                     </div>
                 </section>
 
-                <!-- Technical Deep Dive -->
-                <section>
-                    <h2>Technical Highlights</h2>
+                <!-- Shark code -->
+                <section class="code-example">
+                    <h2>Shark State Machine</h2>
 
-                    <h3>Server-Authoritative AI</h3>
                     <p>
-                        One of the main challenges was
-                        maintaining consistent enemy behavior
-                        in an online multiplayer environment.
-                    </p>
-                    <p>
-                        I used Unreal Engine's authority checks
-                        and replication framework to keep AI
-                        behavior synchronized between the
-                        server and connected clients.
-                        Debugging replication issues helped
-                        me improve the reliability of the
-                        enemy systems.
-                    </p>
-
-                    <h3>Reusable AI Architecture</h3>
-                    <p>
-                        To avoid duplicating functionality,
-                        I structured the enemy classes around
-                        a shared AEnemyBase implementation.
-                        Common features such as health and
-                        replication could be reused, while
-                        individual enemies implemented
-                        their own behaviors.
+                        The shark uses a switch-based
+                        finite state machine with five
+                        states. It follows a spline path,
+                        switches to chasing when a player
+                        enters its detection range and
+                        attacks when close enough.
                     </p>
 
                     <p>
-                        This approach improved consistency
-                        and made enemy configurations easier
-                        to adjust during development.
+                        When its target leaves the detection
+                        sphere, the shark checks for other
+                        nearby players. It picks the closest
+                        one who isn't knocked down, or
+                        returns to the point where it left
+                        its patrol if nobody is available.
+                    </p>
+
+                    <p>
+                        The AI decisions run on the server.
+                        Clients receive replicated movement
+                        and state updates.
+                    </p>
+
+                    <pre><code>void AShark::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+    if (!HasAuthority()) return;
+
+    switch (CurrentState)
+    {
+        case ESharkState::Patrolling:
+            MoveSpeed = PatrolSpeed;
+            MoveAlongSpline(DeltaTime);
+            if (IsValid(PlayerRef))
+            {
+                CurrentState = ESharkState::Chasing;
+            }
+            break;
+
+        case ESharkState::Chasing:
+            if (!IsValid(PlayerRef))
+            {
+                CurrentState = ESharkState::Returning;
+                break;
+            }
+
+            if (FVector::Dist(GetActorLocation(), PlayerRef-&gt;GetActorLocation()) &lt; AttackRange)
+            {
+                if (GetWorld()-&gt;GetTimeSeconds() - RechargeTimestamp &gt;= 0.f)
+                    CurrentState = ESharkState::Attacking;
+
+                break;
+            }
+
+            MoveSpeed = ChaseSpeed;
+            MoveTowardPlayer(DeltaTime);
+            break;
+
+        case ESharkState::Attacking:
+            PerformAttack();
+            CurrentState = ESharkState::Recharging;
+            break;
+
+        case ESharkState::Returning:
+            if (IsValid(PlayerRef))
+            {
+                CurrentState = ESharkState::Chasing;
+                break;
+            }
+
+            ReturnToSpline(DeltaTime);
+            MoveSpeed = PatrolSpeed;
+            if (PatrolPath &amp;&amp; PatrolPath-&gt;Spline)
+            {
+                FVector SplineLoc = PatrolPath-&gt;Spline-&gt;GetLocationAtDistanceAlongSpline(CurrentDistance, ESplineCoordinateSpace::World);
+                if (FVector::Dist(GetActorLocation(), SplineLoc) &lt; 200.f)
+                {
+                    CurrentState = ESharkState::Patrolling;
+                }
+            }
+            break;
+
+        case ESharkState::Recharging:
+            if (GetWorld()-&gt;GetTimeSeconds() - RechargeTimestamp &gt;= 0.f)
+                CurrentState = ESharkState::Chasing;
+            break;
+    }
+}</code></pre>
+
+                    <p class="code-caption">
+                        From AShark::Tick() – original implementation,
+                        unchanged.
                     </p>
                 </section>
 
-                <!-- Technologies -->
-                <section>
-                    <h2>Technologies</h2>
+                <!-- Algae code -->
+                <section class="code-example">
+                    <h2>Spawning Algae Around the Propeller</h2>
 
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unreal Engine 5</span>
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">Gameplay Programming</span>
-                        <span class="tech-tag">AI</span>
-                        <span class="tech-tag">Finite State Machines</span>
-                        <span class="tech-tag">Networking</span>
-                        <span class="tech-tag">Replication</span>
-                        <span class="tech-tag">USplineComponent</span>
-                    </div>
+                    <p>
+                        When the submarine enters an algae
+                        area, algae spawn around its propeller.
+                        The spawn radius changes with height,
+                        creating an hourglass-shaped spread.
+                    </p>
+
+                    <p>
+                        I used the square root of a random
+                        value to distribute positions evenly
+                        across each circular area. The
+                        positions are calculated in local
+                        space and transformed into world
+                        space, so they follow the propeller's
+                        position and rotation.
+                    </p>
+
+                    <pre><code>void AAlgaeSpawner::SpawnAlgae()
+{
+    if (!PropellerRef || !AlgaeClass) return;
+
+    FVector SpawnCenterLocal(-128.342215f, -9.722936f, -83.838581f);
+    float BaseRadius = 50.f;
+    float MaxRadius  = 150.f;
+    float Height     = 120.f;
+
+    for (int32 i = 0; i &lt; NumAlgaeToSpawn; i++)
+    {
+        if (FMath::FRand() &lt; 0.5f)
+            continue;
+
+        float Z = FMath::FRandRange(-Height, Height);
+        float CurrentRadius = FMath::Lerp(BaseRadius, MaxRadius, FMath::Clamp(FMath::Abs(Z) / Height, 0.f, 1.f));
+        float Angle = FMath::FRandRange(0.f, 2 * PI);
+        float Distance = FMath::Sqrt(FMath::FRand()) * CurrentRadius;
+
+        float X = FMath::Cos(Angle) * Distance;
+        float Y = FMath::Sin(Angle) * Distance;
+
+        FVector RandomLocalOffset(X, Y, Z);
+        FVector FinalLocalPos = SpawnCenterLocal + RandomLocalOffset;
+        FVector WorldPos = PropellerRef-&gt;GetComponentTransform().TransformPosition(FinalLocalPos);
+        FRotator RandomRot(0.f, FMath::FRandRange(0.f, 360.f), 0.f);
+
+        AAlgae* Spawned = GetWorld()-&gt;SpawnActor&lt;AAlgae&gt;(AlgaeClass, WorldPos, RandomRot);
+        if (Spawned)
+        {
+            Spawned-&gt;AttachToComponent(PropellerRef, FAttachmentTransformRules::KeepWorldTransform);
+            SpawnedAlgae.Add(Spawned);
+            Spawned-&gt;SetOwningSpawner(this);
+        }
+    }
+}</code></pre>
+
+                    <p class="code-caption">
+                        From AAlgaeSpawner::SpawnAlgae() –
+                        original implementation, unchanged.
+                    </p>
                 </section>
 
             </div>
 
-            <!-- Next Project -->
+            <!-- Next project -->
             <a class="next-project" href="losttracks.html">
                 <span>NEXT PROJECT →</span>
-                <strong>LostTracks</strong>
+                <strong>Lost Tracks</strong>
             </a>
 
         </section>
