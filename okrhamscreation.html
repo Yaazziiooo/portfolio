@@ -2,305 +2,935 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ok'Rhams Creation - UI Programming by Yasmin Adas">
-    <title>Ok'Rhams Creation | Yasmin Adas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ok'Rhams Creation – Unreal Engine 5 Blueprint and UI programming by Yasmin Adas.">
+<title>Ok'Rhams Creation | Yasmin Adas</title>
 
-    <style>
-        .trailer-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-        }
+<style>
+:root {
+    --bg: #100d0b;
+    --panel: #201915;
+    --panel-light: #30241b;
+    --line: #514033;
+    --text: #f6efe5;
+    --muted: #c0afa0;
+    --accent: #e9b974;
+    --accent-light: #f6d6a6;
+    --max-width: 1140px;
+}
 
-        .trailer-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .contribution-list {
-            display: grid;
-            gap: 22px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .contribution-item {
-            padding: 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        .contribution-item h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-        }
+a {
+    color: inherit;
+}
 
-        .contribution-item p {
-            margin: 0;
-        }
+img {
+    display: block;
+    max-width: 100%;
+}
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+h1, h2, h3, p {
+    margin-top: 0;
+}
 
-        .tech-tag {
-            padding: 8px 13px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--accent);
-            font-size: 13px;
-        }
+h1, h2, h3 {
+    line-height: 1.15;
+    letter-spacing: -.04em;
+}
 
-        /* Next project navigation */
-        .next-project {
-            display: block;
-            margin: 45px 0 20px;
-            padding: 25px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: border-color 0.2s ease;
-        }
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
 
-        .next-project:hover,
-        .next-project:focus-visible {
-            border-color: var(--accent);
-        }
+/* NAVIGATION */
 
-        .next-project span {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-size: 13px;
-        }
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
 
-        .next-project strong {
-            color: var(--text);
-            font-size: 22px;
-        }
+.navigation {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .next-project {
-                transition: none;
-            }
-        }
-    </style>
+.brand {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 680px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #27180f;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(16, 11, 9, .92),
+            rgba(16, 11, 9, .57) 65%,
+            rgba(16, 11, 9, .2)
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg),
+            rgba(16, 13, 11, .1) 85%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 85px 0 75px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 45px;
+    color: #e7d5c1;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin-bottom: 25px;
+    font-size: clamp(52px, 9vw, 108px);
+    font-weight: 900;
+    line-height: .98;
+    letter-spacing: -.075em;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 25px;
+    color: #f0dfcd;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.project-meta span {
+    white-space: nowrap;
+}
+
+.project-meta span::before {
+    content: "•";
+    margin-right: 6px;
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 580px;
+    color: #e5d5c4;
+    font-size: 17px;
+}
+
+/* HERO LINKS */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hero-link.secondary {
+    border-bottom-color: transparent;
+    color: #e1cfba;
+}
+
+.hero-link:hover,
+.hero-link.secondary:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.link-arrow {
+    color: var(--accent);
+}
+
+/* CONTENT SECTIONS */
+
+.section {
+    padding: 85px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: clamp(34px, 4.5vw, 50px);
+    font-weight: 850;
+}
+
+.section-intro {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+/* GAMEPLAY VIDEO */
+
+.video-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.75fr;
+    align-items: center;
+    gap: 42px;
+}
+
+.video-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #000;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* MY CONTRIBUTIONS */
+
+.contributions-section {
+    background:
+        radial-gradient(
+            ellipse at 85% 10%,
+            rgba(210, 142, 72, .09),
+            transparent 55%
+        );
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 35px 0 18px;
+}
+
+.feature {
+    position: relative;
+    min-height: 270px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            circle at 95% 0%,
+            rgba(233, 185, 116, .1),
+            transparent 55%
+        ),
+        var(--panel-light);
+}
+
+.feature-label {
+    display: block;
+    margin-bottom: 45px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+    letter-spacing: .07em;
+}
+
+.feature h3 {
+    margin-bottom: 14px;
+    font-size: clamp(23px, 3vw, 29px);
+}
+
+.feature p {
+    max-width: 500px;
+    margin: 0;
+    color: #dbccbd;
+    font-size: 15px;
+}
+
+.more-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.contribution {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+.contribution-label {
+    display: block;
+    margin-bottom: 25px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+}
+
+.contribution h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.contribution p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* TECHNOLOGIES */
+
+.technologies-section {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.tech-tag {
+    padding: 10px 15px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel);
+    color: #f0d7b4;
+    font-size: 14px;
+}
+
+/* PREVIOUS AND NEXT PROJECTS */
+
+.project-navigation-section {
+    padding: 45px 0 90px;
+    border-top: 1px solid var(--line);
+}
+
+.project-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-navigation-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.project-navigation-link:hover {
+    border-color: var(--accent);
+    background: #443021;
+}
+
+.project-navigation-link.previous {
+    justify-content: flex-start;
+}
+
+.project-navigation-link.next {
+    text-align: right;
+}
+
+.project-navigation-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.project-navigation-link strong {
+    display: block;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.project-navigation-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 34px;
+    line-height: 1;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .video-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .more-contributions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-content {
+        padding: 55px 0 65px;
+    }
+
+    .back-link {
+        margin-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: clamp(49px, 11vw, 75px);
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .featured-grid,
+    .more-contributions,
+    .project-navigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        min-height: 230px;
+        padding: 26px;
+    }
+
+    .feature-label {
+        margin-bottom: 26px;
+    }
+
+    .contribution {
+        padding: 26px;
+    }
+
+    .technologies-section {
+        padding: 55px 0;
+    }
+
+    .project-navigation-link {
+        padding: 24px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .project-navigation-link {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html#home">Yasmin Adas</a>
 
-            <div>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<!-- NAVIGATION -->
 
-    <main>
-        <section class="project-detail">
+<header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
 
-            <a class="back-link" href="index.html#projects">
-                ← Back to Projects
+        <a href="index.html#home" class="brand">
+            Yasmin<span>.</span>Adas
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img
+        class="hero-image"
+        src="images/okrhamscreation.webp"
+        alt="Ok'Rhams Creation gameplay artwork"
+    >
+
+    <div class="container hero-content">
+
+        <a class="back-link" href="index.html#projects">
+            ← Back to all projects
+        </a>
+
+        <div class="eyebrow">
+            UI Programming / Game Project
+        </div>
+
+        <h1>Ok'Rhams<br>Creation</h1>
+
+        <div class="project-meta" aria-label="Project details">
+            <span>Team of 18</span>
+            <span>7 weeks</span>
+            <span>Unreal Engine 5</span>
+            <span>Blueprints</span>
+        </div>
+
+        <p class="hero-description">
+            Explore a mysterious cathedral in this first-person
+            puzzle-action game. Collect artifacts, avoid dangers
+            and solve puzzles to uncover its secrets.
+        </p>
+
+        <div class="hero-actions">
+
+            <a class="hero-link" href="#my-work">
+                Explore my work
+                <span class="link-arrow" aria-hidden="true">↓</span>
             </a>
 
-            <h1>Ok'Rhams Creation</h1>
+            <a class="hero-link secondary" href="#gameplay-video">
+                Watch gameplay
+                <span class="link-arrow" aria-hidden="true">↓</span>
+            </a>
 
-            <p class="project-subtitle">
-                UI Programmer · Unreal Engine 5 · Blueprints
+            <a
+                class="hero-link secondary"
+                href="https://futuregames.itch.io/okrhams-creation"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                View on itch.io
+                <span class="link-arrow" aria-hidden="true">↗</span>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- GAMEPLAY VIDEO -->
+
+<section class="section" id="gameplay-video">
+    <div class="container video-layout">
+
+        <div>
+
+            <div class="eyebrow">
+                01 / The Game
+            </div>
+
+            <h2 class="section-title">
+                Gameplay
+            </h2>
+
+            <p class="section-intro">
+                Watch the gameplay trailer for a look
+                inside the cathedral and the challenges
+                players encounter.
             </p>
 
-            <img
-                src="images/okrhamscreation.webp"
-                alt="Ok'Rhams Creation artwork"
-                class="project-hero-image"
+        </div>
+
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/mvrgbe3kfcw"
+                title="Ok'Rhams Creation Gameplay Trailer"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- MY CONTRIBUTIONS -->
+
+<section class="section contributions-section" id="my-work">
+    <div class="container">
+
+        <div class="eyebrow">
+            02 / My Work
+        </div>
+
+        <h2 class="section-title">
+            What I Built
+        </h2>
+
+        <div class="featured-grid">
+
+            <!-- INTERACTION PROMPTS -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    01 / GAMEPLAY UI
+                </span>
+
+                <h3>
+                    Interaction Prompt System
+                </h3>
+
+                <p>
+                    Built a trigger-based system that
+                    displays interaction prompts when
+                    players approach objects they can
+                    interact with.
+                </p>
+
+            </article>
+
+            <!-- MENUS -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    02 / UI PROGRAMMING
+                </span>
+
+                <h3>
+                    Menu Systems
+                </h3>
+
+                <p>
+                    Created the main menu, pause menu
+                    and death menu using Unreal Engine
+                    Blueprints, handling button interactions
+                    and transitions between gameplay and menus.
+                </p>
+
+            </article>
+
+        </div>
+
+        <div class="more-contributions">
+
+            <!-- INPUT AND CURSOR -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    03 / INPUT HANDLING
+                </span>
+
+                <h3>
+                    Input and Cursor Handling
+                </h3>
+
+                <p>
+                    Handled input mode switching and cursor
+                    visibility, allowing players to move
+                    smoothly between gameplay and menus.
+                </p>
+
+            </article>
+
+            <!-- INVENTORY FEEDBACK -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    04 / GAMEPLAY INTEGRATION
+                </span>
+
+                <h3>
+                    Inventory Feedback
+                </h3>
+
+                <p>
+                    Connected inventory events to the UI,
+                    displaying visual feedback when players
+                    interact with or collect items.
+                </p>
+
+            </article>
+
+            <!-- REUSABLE BLUEPRINT EVENTS -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    05 / BLUEPRINT SYSTEMS
+                </span>
+
+                <h3>
+                    Reusable Blueprint Events
+                </h3>
+
+                <p>
+                    Created reusable Blueprint events
+                    and configurable variables, allowing
+                    other programmers to update the UI
+                    from their gameplay systems without
+                    modifying the UI logic.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+
+<section class="technologies-section">
+    <div class="container">
+
+        <div class="eyebrow">
+            03 / Technologies
+        </div>
+
+        <h2 class="section-title">
+            Tools &amp; Systems
+        </h2>
+
+        <div class="tech-tags">
+            <span class="tech-tag">Unreal Engine 5</span>
+            <span class="tech-tag">Blueprints</span>
+            <span class="tech-tag">UMG Widgets</span>
+            <span class="tech-tag">UI Programming</span>
+            <span class="tech-tag">Input Handling</span>
+            <span class="tech-tag">Event-Driven UI</span>
+            <span class="tech-tag">Gameplay Integration</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- PREVIOUS AND NEXT PROJECTS -->
+
+<section class="project-navigation-section">
+    <div class="container">
+
+        <nav class="project-navigation-grid" aria-label="Project navigation">
+
+            <a
+                href="ratatosk.html"
+                class="project-navigation-link previous"
             >
 
-            <div class="project-detail-content">
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    ←
+                </span>
 
-                <!-- About -->
-                <section>
-                    <h2>About the Game</h2>
-                    <p>
-                        Ok'Rhams Creation is a first-person
-                        puzzle-action game set inside a dark
-                        and mysterious cathedral.
-                    </p>
-                    <p>
-                        Players explore the environment,
-                        collect artifacts, avoid dangers
-                        and activate ancient systems to
-                        progress through the game.
-                    </p>
-                </section>
+                <div>
+                    <span class="project-navigation-label">
+                        PREVIOUS PROJECT
+                    </span>
 
-                <!-- Trailer -->
-                <section>
-                    <h2>Gameplay Trailer</h2>
+                    <strong>
+                        Ratatosk
+                    </strong>
+                </div>
 
-                    <div class="trailer-container">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/mvrgbe3kfcw"
-                            title="Ok'Rhams Creation Gameplay Trailer"
-                            loading="lazy"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </section>
-
-                <!-- Contributions -->
-                <section>
-                    <h2>My Contributions</h2>
-
-                    <p>
-                        I was responsible for implementing
-                        the game's entire user interface
-                        using Unreal Engine 5 Blueprints,
-                        including menus, interaction prompts,
-                        inventory feedback and gameplay UI.
-                    </p>
-
-                    <div class="contribution-list">
-
-                        <div class="contribution-item">
-                            <h3>Interaction Prompt System</h3>
-                            <p>
-                                Implemented a trigger-based
-                                interaction system that
-                                displays contextual prompts
-                                when players approach
-                                interactable objects.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Menu Systems</h3>
-                            <p>
-                                Built the main menu, pause
-                                menu and death menu using
-                                Blueprint, including button
-                                functionality and game
-                                state transitions.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Input and Cursor Handling</h3>
-                            <p>
-                                Implemented input mode
-                                switching and mouse cursor
-                                visibility to support
-                                navigation between menus
-                                and gameplay.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Inventory Feedback</h3>
-                            <p>
-                                Connected inventory-related
-                                gameplay events to UI
-                                updates, providing visual
-                                feedback when players
-                                interacted with or
-                                collected objects.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Reusable Blueprint Events</h3>
-                            <p>
-                                Structured UI logic using
-                                reusable Blueprint events
-                                and configurable variables,
-                                allowing other developers
-                                to trigger interface
-                                updates from their systems.
-                            </p>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Technical highlights -->
-                <section>
-                    <h2>Technical Highlights</h2>
-
-                    <h3>Blueprint-Based UI Architecture</h3>
-                    <p>
-                        All UI functionality was implemented
-                        using Unreal Engine's visual
-                        scripting system rather than C++.
-                    </p>
-                    <p>
-                        I used Blueprint nodes such as
-                        Create Widget, Add to Viewport,
-                        Set Visibility and Remove from Parent
-                        to manage interface creation,
-                        updates and removal.
-                    </p>
-
-                    <h3>Gameplay and UI Integration</h3>
-                    <p>
-                        Interaction prompts were activated
-                        through trigger volumes, allowing
-                        UI elements to respond to player
-                        proximity and gameplay events.
-                    </p>
-                    <p>
-                        I also worked with input modes and
-                        mouse cursor control to make
-                        transitions between menus and
-                        gameplay function correctly.
-                    </p>
-
-                    <h3>Modular UI Design</h3>
-                    <p>
-                        I exposed reusable Blueprint events
-                        so that other team members could
-                        connect their gameplay systems to
-                        the UI without modifying the
-                        underlying interface logic.
-                    </p>
-                </section>
-
-                <!-- Technologies -->
-                <section>
-                    <h2>Technologies</h2>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unreal Engine 5</span>
-                        <span class="tech-tag">Blueprints</span>
-                        <span class="tech-tag">UI Programming</span>
-                        <span class="tech-tag">UMG Widgets</span>
-                        <span class="tech-tag">Input Handling</span>
-                        <span class="tech-tag">Event-Driven UI</span>
-                        <span class="tech-tag">Gameplay Integration</span>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- Next Project -->
-            <a class="next-project" href="suboptimal.html">
-                <span>NEXT PROJECT →</span>
-                <strong>SUBOPTIMAL</strong>
             </a>
 
-        </section>
-    </main>
+            <a
+                href="suboptimal.html"
+                class="project-navigation-link next"
+            >
+
+                <div>
+                    <span class="project-navigation-label">
+                        NEXT PROJECT
+                    </span>
+
+                    <strong>
+                        SUBOPTIMAL
+                    </strong>
+                </div>
+
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    →
+                </span>
+
+            </a>
+
+        </nav>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <div class="container footer-inner">
+
+        <span>
+            Yasmin Adas · Game Programmer
+        </span>
+
+        <a href="index.html#projects">
+            Back to Projects ↑
+        </a>
+
+    </div>
+</footer>
+
 </body>
 </html>

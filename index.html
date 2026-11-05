@@ -2,360 +2,1049 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yasmin Adas | Game Programmer specializing in gameplay, AI and game systems.">
-    <title>Yasmin Adas | Game Programmer</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Yasmin Adas – Game Programmer working with C++, C#, Unreal Engine and Unity.">
+<title>Yasmin Adas | Game Programmer</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+    --home-bg: #0c0f10;
+    --home-panel: #151b1b;
+    --home-panel-light: #1c2521;
+    --home-line: #303c39;
+    --home-text: #f1f5f1;
+    --home-muted: #a4b3ad;
+    --home-accent: #b8ed80;
+}
+
+body {
+    background: var(--home-bg);
+    color: var(--home-text);
+}
+
+header {
+    background: var(--home-bg);
+    border-color: var(--home-line);
+}
+
+nav {
+    max-width: 1188px;
+}
+
+.site-name {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+}
+
+.site-name span {
+    color: var(--home-accent);
+}
+
+.nav-links a {
+    color: var(--home-muted);
+}
+
+.nav-links a:hover {
+    color: var(--home-accent);
+}
+
+main {
+    max-width: 1188px;
+}
+
+/* HERO */
+
+#home {
+    position: relative;
+    min-height: 660px;
+    padding: 90px 0 110px;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    right: 0;
+    top: 40px;
+    border-radius: 50%;
+    background: rgba(130, 184, 112, .12);
+    filter: blur(110px);
+    pointer-events: none;
+}
+
+#home .hero-content {
+    position: relative;
+    z-index: 1;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .75fr);
+    gap: 65px;
+}
+
+#home .hero-label {
+    color: var(--home-accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+#home .hero-text h1 {
+    font-size: clamp(48px, 6vw, 82px);
+    letter-spacing: -.075em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+}
+
+#home .hero-text .hero-description {
+    max-width: 650px;
+    margin-bottom: 20px;
+    color: var(--home-text);
+    font-size: clamp(23px, 3vw, 34px);
+    line-height: 1.35;
+    font-weight: 650;
+    letter-spacing: -.035em;
+}
+
+#home .hero-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 29px;
+}
+
+.hero-tech span {
+    padding: 7px 13px;
+    border: 1px solid var(--home-line);
+    border-radius: 6px;
+    background: var(--home-panel);
+    color: #c8d6cb;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* HERO LINKS */
+
+#home .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    margin-top: 34px;
+}
+
+#home .hero-actions a,
+#home .hero-actions a.primary-button,
+#home .hero-actions a.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    width: auto;
+    min-height: 0;
+    padding: 0 0 5px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--home-text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .2s ease, border-color .2s ease;
+}
+
+#home .hero-actions a.primary-button {
+    border-bottom-color: var(--home-accent);
+}
+
+#home .hero-actions a.secondary-button {
+    color: var(--home-muted);
+}
+
+#home .hero-actions a:hover {
+    color: var(--home-accent);
+    border-bottom-color: var(--home-accent);
+    background: transparent;
+    transform: none;
+}
+
+.hero-link-arrow {
+    color: var(--home-accent);
+    font-size: 17px;
+}
+
+#home .hero-photo {
+    position: relative;
+    max-width: 370px;
+    aspect-ratio: 4 / 5;
+    border-radius: 17px;
+    border: 1px solid #4d6b55;
+    box-shadow: 18px 18px 0 rgba(125, 177, 111, .10);
+}
+
+#home .hero-photo img {
+    object-fit: cover;
+}
+
+/* SECTIONS */
+
+#projects,
+#about,
+#contact {
+    padding: 90px 0;
+    border-color: var(--home-line);
+}
+
+.section-label {
+    color: var(--home-accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.section-heading h2,
+#about h2,
+#contact h2 {
+    margin-bottom: 18px;
+    font-size: clamp(36px, 4.5vw, 53px);
+    font-weight: 850;
+    letter-spacing: -.055em;
+}
+
+.section-description {
+    max-width: 650px;
+    color: var(--home-muted);
+    line-height: 1.85;
+}
+
+/* PROJECT CARDS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid var(--home-line);
+    border-radius: 13px;
+    background: var(--home-panel);
+    align-self: start;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+    transform: translateY(-4px);
+    border-color: var(--home-accent);
+    box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+
+.project-card-link {
+    display: block;
+    height: auto;
+    min-height: 0;
+}
+
+.project-image {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.025);
+}
+
+.project-media {
+    overflow: hidden;
+    background: #1c2323;
+}
+
+.project-info {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding: 22px 25px 23px;
+    background: var(--home-panel);
+}
+
+.project-info h3 {
+    margin: 0 0 13px;
+    font-size: 25px;
+    letter-spacing: -.04em;
+}
+
+.project-info p {
+    color: var(--home-muted);
+}
+
+/* PROJECT DETAILS */
+
+.project-info .project-details,
+.project-info .project-technologies {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    color: var(--home-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.project-info .project-technologies {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.detail-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.detail-dot {
+    color: var(--home-accent);
+    font-size: 15px;
+    line-height: 1;
+}
+
+.project-arrow {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: var(--home-accent);
+    font-size: 24px;
+    line-height: 1;
+}
+
+.project-info .award {
+    color: var(--home-accent);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* FEATURED PROJECT */
+
+.project-card.featured {
+    grid-column: 1 / -1;
+    background: var(--home-panel-light);
+}
+
+.project-card.featured .project-card-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+}
+
+.project-card.featured .project-media {
+    min-height: 350px;
+}
+
+.project-card.featured .project-image {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    aspect-ratio: auto;
+}
+
+.project-card.featured .project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 38px;
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(155, 210, 128, .12),
+            transparent 60%
+        ),
+        var(--home-panel-light);
+}
+
+.featured-label {
+    margin-bottom: 14px;
+    color: var(--home-accent);
+    font-size: 12px;
+    letter-spacing: .15em;
+    font-weight: 800;
+}
+
+.project-card.featured h3 {
+    font-size: clamp(35px, 5vw, 56px);
+    letter-spacing: -.06em;
+}
+
+.featured-description {
+    margin: 12px 0 16px !important;
+    color: #cad7ce !important;
+    font-size: 15px !important;
+    line-height: 1.7;
+}
+
+/* LOST TRACKS PLACEHOLDER */
+
+.project-placeholder {
+    min-height: 240px;
+}
+
+.losttracks {
+    background: linear-gradient(135deg, #272131, #644563);
+}
+
+.placeholder-content strong {
+    color: #fff;
+}
+
+/* ABOUT */
+
+#about {
+    position: relative;
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+    gap: 65px;
+    align-items: start;
+}
+
+.about-heading::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 28px;
+    background: var(--home-accent);
+}
+
+.about-content {
+    max-width: 720px;
+}
+
+.about-content p {
+    color: var(--home-muted);
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+.about-content p:first-child {
+    color: var(--home-text);
+    font-size: 20px;
+    font-weight: 550;
+}
+
+/* CONTACT */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: 65px;
+    align-items: start;
+}
+
+.contact-intro {
+    color: var(--home-muted);
+}
+
+#contact-form {
+    max-width: none;
+    padding: 32px;
+    background: var(--home-panel);
+    border: 1px solid var(--home-line);
+    border-radius: 13px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: #101514;
+    border-color: var(--home-line);
+    border-radius: 7px;
+}
+
+#contact-submit {
+    background: var(--home-accent);
+    color: #101910;
+    font-weight: 800;
+}
+
+.social-links {
+    margin-top: 24px;
+}
+
+.social-links a {
+    color: var(--home-accent);
+}
+
+/* ACCESSIBILITY */
+
+.project-card-link:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--home-accent);
+    outline-offset: 3px;
+}
+
+/* MOBILE TOUCH */
+
+@media (hover: none) {
+    .project-card:active {
+        border-color: var(--home-accent);
+    }
+
+    .project-card-link:active .project-info {
+        background: #233027;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    #home .hero-content {
+        gap: 30px;
+    }
+
+    .project-card.featured .project-info {
+        padding: 28px;
+    }
+
+    .about-layout,
+    .contact-layout {
+        gap: 35px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    nav {
+        padding: 20px 24px;
+    }
+
+    #home {
+        min-height: auto;
+        padding: 65px 0;
+    }
+
+    #home .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #home .hero-text h1 {
+        font-size: clamp(43px, 11vw, 65px);
+    }
+
+    #home .hero-text .hero-description {
+        font-size: clamp(22px, 6vw, 29px);
+    }
+
+    #home .hero-photo {
+        justify-self: center;
+        width: min(100%, 330px);
+    }
+
+    #projects,
+    #about,
+    #contact {
+        padding: 65px 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.featured {
+        grid-column: auto;
+    }
+
+    .project-card.featured .project-card-link {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.featured .project-media {
+        min-height: auto;
+    }
+
+    .project-card.featured .project-image {
+        min-height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .project-card.featured .project-info {
+        padding: 25px;
+    }
+
+    .about-layout,
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    #contact-form {
+        padding: 22px;
+    }
+
+    #home .hero-actions {
+        gap: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .project-image,
+    #home .hero-actions a {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a class="site-name" href="#home">Yasmin Adas</a>
 
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+<!-- NAVIGATION -->
+
+<header>
+    <nav>
+        <a class="site-name" href="#home">
+            Yasmin<span>.</span>Adas
+        </a>
+
+        <div class="nav-links">
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section id="home">
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <p class="hero-label">
+                CRAFTING DIGITAL WORLDS
+            </p>
+
+            <h1>Hi, I'm Yasmin.</h1>
+
+            <p class="hero-description">
+                I make games, solve problems, and occasionally
+                create a few new ones along the way.
+            </p>
+
+            <div class="hero-tech">
+                <span>GAMEPLAY PROGRAMMING</span>
+                <span>C++</span>
+                <span>C#</span>
+                <span>UNREAL ENGINE</span>
+                <span>UNITY</span>
             </div>
-        </nav>
-    </header>
 
-    <main>
+            <div class="hero-actions">
+                <a class="primary-button" href="#projects">
+                    View my projects
+                    <span class="hero-link-arrow" aria-hidden="true">↓</span>
+                </a>
 
-        <!-- Home -->
-        <section id="home">
-            <div class="hero-content">
+                <a class="secondary-button"
+                   href="cv/Yasmin_Adas_CV.pdf"
+                   download="Yasmin_Adas_CV.pdf">
+                    Download CV
+                    <span class="hero-link-arrow" aria-hidden="true">↓</span>
+                </a>
+            </div>
 
-                <div class="hero-text">
-                    <p class="hero-label">
-                        GAME PROGRAMMER · STOCKHOLM
+        </div>
+
+        <div class="hero-photo">
+            <img
+                src="images/selfie.webp"
+                alt="Portrait of Yasmin Adas"
+                fetchpriority="high"
+            >
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="section-heading">
+        <p class="section-label">PROJECTS</p>
+
+        <h2>Games I've Worked On</h2>
+
+        <p class="section-description">
+            A mix of team projects and a solo game
+            from my time at Futuregames.
+        </p>
+    </div>
+
+    <div class="projects-grid">
+
+        <!-- SUBOPTIMAL -->
+
+        <article class="project-card featured">
+            <a class="project-card-link" href="suboptimal.html">
+
+                <div class="project-media">
+                    <img
+                        src="images/suboptimal.jpg"
+                        alt="SUBOPTIMAL artwork"
+                        class="project-image"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="project-info">
+
+                    <span class="featured-label">
+                        FEATURED PROJECT
+                    </span>
+
+                    <h3>SUBOPTIMAL</h3>
+
+                    <div class="project-details">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Team of 8
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            4 weeks
+                        </span>
+                    </div>
+
+                    <div class="project-technologies">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Unreal Engine 5
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            C++
+                        </span>
+                    </div>
+
+                    <p class="featured-description">
+                        I programmed enemy AI and underwater
+                        hazards in C++, including the shark's
+                        state machine and multiplayer behavior.
                     </p>
 
-                    <h1>Hi, I'm Yasmin.</h1>
+                    <span class="award">
+                        ★ Winner – Best Co-op / Multiplayer Game
+                        · Futuregames Awards 2026
+                    </span>
 
-                    <p class="hero-description">
-                        A game programmer who loves turning
-                        ideas into interactive experiences.
-                    </p>
+                    <span class="award">
+                        Nominated – Best Technology
+                        · Swedish Game Awards, New Talent 2026
+                    </span>
 
-                    <p class="hero-tech">
-                        Unity · C# · Unreal Engine · C++
-                    </p>
+                    <span class="project-arrow" aria-hidden="true">
+                        ↗
+                    </span>
+                </div>
 
-                    <div class="hero-actions">
-                        <a class="primary-button" href="#projects">
-                            Explore My Work →
-                        </a>
+            </a>
+        </article>
 
-                        <a class="secondary-button" href="#about">
-                            More About Me
-                        </a>
+        <!-- LOST TRACKS -->
+
+        <article class="project-card">
+            <a class="project-card-link" href="losttracks.html">
+
+                <div class="project-media">
+                    <div class="project-image project-placeholder losttracks">
+                        <div class="placeholder-content">
+                            <span>UNITY · C#</span>
+                            <strong>Lost Tracks</strong>
+                            <span>
+                                Quests · Inventory · Minigames
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="hero-photo">
+                <div class="project-info">
+
+                    <h3>Lost Tracks</h3>
+
+                    <div class="project-details">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Solo project
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            10 weeks
+                        </span>
+                    </div>
+
+                    <div class="project-technologies">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Unity
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            C#
+                        </span>
+                    </div>
+
+                    <span class="project-arrow" aria-hidden="true">
+                        ↗
+                    </span>
+                </div>
+
+            </a>
+        </article>
+
+        <!-- THE LAST FLAME -->
+
+        <article class="project-card">
+            <a class="project-card-link" href="thelastflame.html">
+
+                <div class="project-media">
                     <img
-                        src="images/selfie.webp"
-                        alt="Portrait of Yasmin Adas"
-                        fetchpriority="high"
+                        src="images/thelastflame.png"
+                        alt="The Last Flame artwork"
+                        class="project-image"
+                        loading="lazy"
                     >
                 </div>
-            </div>
-        </section>
 
-        <!-- Projects -->
-        <section id="projects">
-            <div class="section-heading">
-                <p class="section-label">PORTFOLIO</p>
-                <h2>Game Projects</h2>
-                <p class="section-description">
-                    A selection of projects I've worked on,
-                    from gameplay systems and AI to UI
-                    programming and interactive experiences.
-                </p>
-            </div>
+                <div class="project-info">
 
-            <div class="projects-grid">
+                    <h3>The Last Flame</h3>
 
-                <!-- SUBOPTIMAL -->
-                <article class="project-card">
-                    <a class="project-card-link" href="suboptimal.html">
-                        <img
-                            src="images/suboptimal.jpg"
-                            alt="SUBOPTIMAL artwork"
-                            class="project-image"
-                            loading="lazy"
-                        >
+                    <div class="project-details">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Team of 14
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            3 weeks
+                        </span>
+                    </div>
 
-                        <div class="project-info">
-                            <h3>SUBOPTIMAL</h3>
+                    <div class="project-technologies">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Unity
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            C#
+                        </span>
+                    </div>
 
-                            <p class="project-role">
-                                Gameplay & AI Programmer
-                            </p>
+                    <span class="award">
+                        Nominated – Best Narrative
+                    </span>
 
-                            <p>Unreal Engine 5 · C++</p>
+                    <span class="project-arrow" aria-hidden="true">
+                        ↗
+                    </span>
+                </div>
 
-                            <span class="award">
-                                ★ Winner – Best Co-op / Multiplayer Game · Futuregames Awards 2026
-                            </span>
-                            <br>
-                            <span class="award">
-                                Nominated – Best Technology · Swedish Game Awards, New Talent 2026
-                            </span>
-                        </div>
-                    </a>
-                </article>
+            </a>
+        </article>
 
-                <!-- Lost Tracks -->
-                <article class="project-card">
-                    <a class="project-card-link" href="losttracks.html">
-                        <div class="project-image project-placeholder losttracks">
-                            <div class="placeholder-content">
-                                <span>UNITY · C#</span>
-                                <strong>Lost Tracks</strong>
-                                <span>
-                                    Gameplay · Quest Systems · Minigames
-                                </span>
-                            </div>
-                        </div>
+        <!-- RATATOSK -->
 
-                        <div class="project-info">
-                            <h3>Lost Tracks</h3>
+        <article class="project-card">
+            <a class="project-card-link" href="ratatosk.html">
 
-                            <p class="project-role">
-                                Solo Game Programmer
-                            </p>
+                <div class="project-media">
+                    <img
+                        src="images/ratatosk.jpg"
+                        alt="Ratatosk artwork"
+                        class="project-image"
+                        loading="lazy"
+                    >
+                </div>
 
-                            <p>Unity · C#</p>
-                        </div>
-                    </a>
-                </article>
+                <div class="project-info">
 
-                <!-- Chaotic Shroom Hunt -->
-                <article class="project-card">
-                    <a class="project-card-link" href="chaoticshroomhunt.html">
-                        <div class="project-image project-placeholder shroomhunt">
-                            <div class="placeholder-content">
-                                <span>UNREAL ENGINE 5 · C++</span>
-                                <strong>Chaotic Shroom Hunt</strong>
-                                <span>
-                                    Gameplay · Spawning · Game Systems
-                                </span>
-                            </div>
-                        </div>
+                    <h3>Ratatosk</h3>
 
-                        <div class="project-info">
-                            <h3>Chaotic Shroom Hunt</h3>
+                    <div class="project-details">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Team of 9
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            3 weeks
+                        </span>
+                    </div>
 
-                            <p class="project-role">
-                                Game Programmer
-                            </p>
+                    <div class="project-technologies">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Unity
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            C#
+                        </span>
+                    </div>
 
-                            <p>Unreal Engine 5 · C++</p>
-                        </div>
-                    </a>
-                </article>
+                    <span class="project-arrow" aria-hidden="true">
+                        ↗
+                    </span>
+                </div>
 
-                <!-- The Last Flame -->
-                <article class="project-card">
-                    <a class="project-card-link" href="thelastflame.html">
-                        <img
-                            src="images/thelastflame.png"
-                            alt="The Last Flame artwork"
-                            class="project-image"
-                            loading="lazy"
-                        >
+            </a>
+        </article>
 
-                        <div class="project-info">
-                            <h3>The Last Flame</h3>
+        <!-- OK'RHAMS CREATION -->
 
-                            <p class="project-role">
-                                Game Programmer
-                            </p>
+        <article class="project-card">
+            <a class="project-card-link" href="okrhamscreation.html">
 
-                            <p>Unity · C#</p>
+                <div class="project-media">
+                    <img
+                        src="images/okrhamscreation.webp"
+                        alt="Ok'Rhams Creation artwork"
+                        class="project-image"
+                        loading="lazy"
+                    >
+                </div>
 
-                            <span class="award">
-                                Nominated – Best Narrative
-                            </span>
-                        </div>
-                    </a>
-                </article>
+                <div class="project-info">
 
-                <!-- Ratatosk -->
-                <article class="project-card">
-                    <a class="project-card-link" href="ratatosk.html">
-                        <img
-                            src="images/ratatosk.jpg"
-                            alt="Ratatosk artwork"
-                            class="project-image"
-                            loading="lazy"
-                        >
+                    <h3>Ok'Rhams Creation</h3>
 
-                        <div class="project-info">
-                            <h3>Ratatosk</h3>
+                    <div class="project-details">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Team of 18
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            7 weeks
+                        </span>
+                    </div>
 
-                            <p class="project-role">
-                                UI Programmer
-                            </p>
+                    <div class="project-technologies">
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Unreal Engine 5
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            C++
+                        </span>
+                        <span class="detail-item">
+                            <span class="detail-dot">•</span>
+                            Blueprints
+                        </span>
+                    </div>
 
-                            <p>Unity · C#</p>
-                        </div>
-                    </a>
-                </article>
+                    <span class="project-arrow" aria-hidden="true">
+                        ↗
+                    </span>
+                </div>
 
-                <!-- Ok'Rhams Creation -->
-                <article class="project-card">
-                    <a class="project-card-link" href="okrhamscreation.html">
-                        <img
-                            src="images/okrhamscreation.webp"
-                            alt="Ok'Rhams Creation artwork"
-                            class="project-image"
-                            loading="lazy"
-                        >
+            </a>
+        </article>
 
-                        <div class="project-info">
-                            <h3>Ok'Rhams Creation</h3>
+    </div>
+</section>
 
-                            <p class="project-role">
-                                UI Programmer
-                            </p>
+<!-- ABOUT -->
 
-                            <p>Unreal Engine 5 · Blueprints</p>
-                        </div>
-                    </a>
-                </article>
+<section id="about">
+    <div class="about-layout">
 
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about">
-            <p class="section-label">A LITTLE ABOUT ME</p>
+        <div class="about-heading">
+            <p class="section-label">ABOUT ME</p>
             <h2>Beyond the Code</h2>
+        </div>
 
-            <div class="about-content">
-                <p>
-                    Hi! I'm Yasmin, a game programmer who loves
-                    turning ideas into interactive experiences.
-                </p>
+        <div class="about-content">
 
-                <p>
-                    My strength? I bring both structure and spark
-                    to the team. I'm a driven problem-solver,
-                    a reliable collaborator, and I always aim
-                    to deliver on time without compromising
-                    on quality or fun.
-                </p>
-
-                <p>
-                    Whether it's developing gameplay mechanics,
-                    debugging tricky systems, or working closely
-                    with designers, I thrive on making things
-                    work and feel right.
-                </p>
-
-                <p>
-                    If you're looking for someone who codes
-                    with curiosity and brings good energy
-                    into the room, let's talk!
-                </p>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <p class="section-label">LET'S CONNECT</p>
-            <h2>Get in Touch</h2>
-
-            <p class="contact-intro">
-                Interested in working together?
-                Feel free to send me a message!
+            <p>
+                I'm studying Game Programming at Futuregames
+                in Stockholm and graduate in December 2026.
+                I'm looking for my first role as a junior
+                gameplay programmer.
             </p>
 
-            <form
-                id="contact-form"
-                action="https://api.web3forms.com/submit"
-                method="POST"
-            >
-                <input
-                    type="hidden"
-                    name="access_key"
-                    value="6d12b110-4791-475f-9208-7886b071cc68"
-                >
+            <p>
+                I've worked on both team projects
+                and solo games. My work includes
+                enemy AI in Unreal Engine,
+                gameplay systems in Unity,
+                and UI and input programming.
+            </p>
 
-                <input
-                    type="hidden"
-                    name="subject"
-                    value="New Portfolio Contact Message"
-                >
+            <p>
+                I like understanding how things work,
+                especially when something isn't
+                behaving the way I expected.
+                Finding the problem and getting
+                it working is one of my favorite
+                parts of programming.
+            </p>
 
-                <input
-                    type="hidden"
-                    name="from_name"
-                    value="Yasmin Adas Portfolio"
-                >
+            <p>
+                I'm also a social person.
+                I enjoy working with other people,
+                discussing ideas and helping out
+                wherever I can. For me, making games
+                is just as much about the people
+                I work with as it is about the code.
+            </p>
 
-                <input
-                    type="checkbox"
-                    name="botcheck"
-                    style="display:none"
-                    tabindex="-1"
-                    autocomplete="off"
-                    aria-hidden="true"
-                >
+        </div>
+    </div>
+</section>
 
-                <div class="form-group">
-                    <label for="contact-name">Name</label>
-                    <input
-                        type="text"
-                        id="contact-name"
-                        name="name"
-                        placeholder="Your name"
-                        maxlength="100"
-                        autocomplete="name"
-                        required
-                    >
-                </div>
+<!-- CONTACT -->
 
-                <div class="form-group">
-                    <label for="contact-email">Email</label>
-                    <input
-                        type="email"
-                        id="contact-email"
-                        name="email"
-                        placeholder="Your email address"
-                        maxlength="254"
-                        autocomplete="email"
-                        required
-                    >
-                </div>
+<section id="contact">
 
-                <div class="form-group">
-                    <label for="contact-message">Message</label>
-                    <textarea
-                        id="contact-message"
-                        name="message"
-                        rows="6"
-                        placeholder="Your message..."
-                        maxlength="5000"
-                        required
-                    ></textarea>
-                </div>
+    <div class="contact-layout">
 
-                <button type="submit" id="contact-submit">
-                    Send Message
-                </button>
+        <div>
+            <p class="section-label">CONTACT</p>
+            <h2>Let's Talk!</h2>
 
-                <p
-                    id="form-status"
-                    role="status"
-                    aria-live="polite"
-                ></p>
-            </form>
+            <p class="contact-intro">
+                Have a question, an opportunity,
+                or just want to say hi?
+                Feel free to send me a message.
+            </p>
 
             <div class="social-links">
                 <a
@@ -363,57 +1052,146 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Connect with me on LinkedIn ↗
+                    Find Me on LinkedIn ↗
                 </a>
             </div>
-        </section>
-    </main>
+        </div>
 
-    <footer>
-        <p>© Yasmin Adas · Game Programmer</p>
-    </footer>
+        <form
+            id="contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+        >
+            <input
+                type="hidden"
+                name="access_key"
+                value="6d12b110-4791-475f-9208-7886b071cc68"
+            >
 
-    <script>
-        const contactForm = document.getElementById("contact-form");
-        const contactSubmit = document.getElementById("contact-submit");
-        const formStatus = document.getElementById("form-status");
+            <input
+                type="hidden"
+                name="subject"
+                value="New Portfolio Contact Message"
+            >
 
-        contactForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
+            <input
+                type="hidden"
+                name="from_name"
+                value="Yasmin Adas Portfolio"
+            >
 
-            contactSubmit.disabled = true;
-            contactSubmit.textContent = "Sending...";
-            formStatus.textContent = "";
+            <input
+                type="checkbox"
+                name="botcheck"
+                style="display:none"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+            >
 
-            try {
-                const formData = new FormData(contactForm);
+            <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Your name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required
+                >
+            </div>
 
-                const response = await fetch(contactForm.action, {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        Accept: "application/json"
-                    }
-                });
+            <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="Your email address"
+                    maxlength="254"
+                    autocomplete="email"
+                    required
+                >
+            </div>
 
-                const result = await response.json();
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="6"
+                    placeholder="Your message..."
+                    maxlength="5000"
+                    required
+                ></textarea>
+            </div>
 
-                if (response.ok && result.success) {
-                    formStatus.textContent =
-                        "Thank you! Your message has been sent.";
-                    contactForm.reset();
-                } else {
-                    formStatus.textContent =
-                        "Something went wrong. Please try again.";
-                }
-            } catch (error) {
-                formStatus.textContent =
-                    "Unable to send your message. Please try again.";
-            } finally {
-                contactSubmit.disabled = false;
-                contactSubmit.textContent = "Send Message";
+            <button type="submit" id="contact-submit">
+                Send Message
+            </button>
+
+            <p
+                id="form-status"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+        </form>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>© Yasmin Adas · Game Programmer</p>
+</footer>
+
+<!-- CONTACT FORM -->
+
+<script>
+const contactForm = document.getElementById("contact-form");
+const contactSubmit = document.getElementById("contact-submit");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = "Sending...";
+    formStatus.textContent = "";
+
+    try {
+        const formData = new FormData(contactForm);
+
+        const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                Accept: "application/json"
             }
         });
-    </script>
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            formStatus.textContent =
+                "Thank you! Your message has been sent.";
+            contactForm.reset();
+        } else {
+            formStatus.textContent =
+                "Something went wrong. Please try again.";
+        }
+    } catch (error) {
+        formStatus.textContent =
+            "Unable to send your message. Please try again.";
+    } finally {
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = "Send Message";
+    }
+});
+</script>
+
 </body>
 </html>

@@ -2,304 +2,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SUBOPTIMAL - Gameplay and AI programming by Yasmin Adas">
-    <title>SUBOPTIMAL | Yasmin Adas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SUBOPTIMAL - Gameplay and AI programming by Yasmin Adas">
+<title>SUBOPTIMAL | Yasmin Adas</title>
 
-    <style>
-        .trailer-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-        }
+<style>
+:root {
+    --bg: #0c0f10;
+    --panel: #151b1b;
+    --panel-light: #1b2322;
+    --line: #303c39;
+    --text: #f1f5f1;
+    --muted: #a4b3ad;
+    --accent: #b8ed80;
+    --accent-dark: #223629;
+    --max-width: 1140px;
+}
 
-        .trailer-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-        .contribution-list {
-            display: grid;
-            gap: 16px;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+}
 
-        .contribution-item {
-            padding: 18px 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p { margin-top: 0; }
 
-        .contribution-item h3 {
-            margin: 0 0 6px;
-            font-size: 18px;
-        }
+h1, h2, h3 {
+    line-height: 1.18;
+    letter-spacing: -.035em;
+}
 
-        .contribution-item p {
-            margin: 0;
-        }
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
 
-        .code-example {
-            margin-top: 24px;
-        }
+/* NAVIGATION */
 
-        .code-example pre {
-            margin: 16px 0 10px;
-            padding: 20px;
-            background: #191b1e;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow-x: auto;
-            tab-size: 4;
-        }
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: #0c0f10;
+    border-bottom: 1px solid var(--line);
+}
 
-        .code-example code {
-            color: #e2e5e8;
-            font-family: Consolas, "Courier New", monospace;
-            font-size: 13px;
-            line-height: 1.6;
-        }
+.navigation {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
 
-        .code-caption {
-            color: #aeb4bb;
-            font-size: 13px;
-        }
+.brand {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-decoration: none;
+}
 
-        .next-project {
-            display: block;
-            margin: 45px 0 20px;
-            padding: 25px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            text-decoration: none;
-            transition: border-color 0.2s ease;
-        }
+.brand span { color: var(--accent); }
 
-        .next-project:hover,
-        .next-project:focus-visible {
-            border-color: var(--accent);
-        }
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
 
-        .next-project span {
-            display: block;
-            margin-bottom: 8px;
-            color: #aeb4bb;
-            font-size: 13px;
-        }
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
 
-        .next-project strong {
-            color: #f0f0f0;
-            font-size: 22px;
-        }
+.nav-links a:hover { color: var(--accent); }
 
-        @media (prefers-reduced-motion: reduce) {
-            .next-project {
-                transition: none;
-            }
-        }
-    </style>
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 630px;
+    display: flex;
+    align-items: flex-end;
+    background: #10252a;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(5,10,12,.82), rgba(5,10,12,.30) 75%),
+        linear-gradient(0deg, #0c0f10, rgba(12,15,16,.14) 85%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 90px 0 75px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 44px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover { color: var(--accent); }
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    margin-bottom: 16px;
+    font-size: clamp(48px, 10vw, 120px);
+    line-height: .95;
+    letter-spacing: -.08em;
+    font-weight: 900;
+}
+
+.hero-role {
+    color: #e0ebe5;
+    font-size: clamp(17px, 2.4vw, 23px);
+    font-weight: 600;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 20px;
+    color: #d2dfd6;
+    font-size: 14px;
+}
+
+.project-meta span { white-space: nowrap; }
+
+.project-meta span::before {
+    content: "•";
+    margin-right: 6px;
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 530px;
+    color: #c3d0ca;
+    font-size: 17px;
+}
+
+/* SIMPLE HERO LINKS */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.primary-link,
+.secondary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 0 5px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.primary-link {
+    border-bottom-color: var(--accent);
+}
+
+.secondary-link {
+    color: var(--muted);
+}
+
+.primary-link:hover,
+.secondary-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.link-arrow { color: var(--accent); }
+
+/* AWARDS */
+
+.awards-section { padding: 20px 0 72px; }
+
+.awards-heading {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.award {
+    min-height: 145px;
+    padding: 24px 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.award-winner {
+    border-color: #83b971;
+    background: linear-gradient(145deg, #243c2b, #151b1b);
+}
+
+.award-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.award-status {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.award-title {
+    display: block;
+    margin-top: 7px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.award-event {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* SECTIONS */
+
+.content-section {
+    padding: 84px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-title {
+    margin-bottom: 15px;
+    font-size: clamp(31px, 4.5vw, 49px);
+    font-weight: 850;
+}
+
+.section-intro {
+    max-width: 690px;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* TRAILER */
+
+.trailer-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.75fr;
+    align-items: center;
+    gap: 42px;
+}
+
+.trailer-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #000;
+}
+
+.trailer-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* CONTRIBUTIONS */
+
+.contributions-section {
+    background: radial-gradient(
+        ellipse at 85% 10%,
+        rgba(101,151,100,.11),
+        transparent 50%
+    );
+}
+
+.featured-contributions {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 18px;
+    margin: 30px 0 18px;
+}
+
+.feature {
+    position: relative;
+    min-height: 270px;
+    padding: 34px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+}
+
+.feature-shark {
+    background:
+        radial-gradient(circle at 90% 15%, rgba(156,210,128,.20), transparent 50%),
+        #1b2520;
+}
+
+.feature-number {
+    display: block;
+    margin-bottom: 42px;
+    color: var(--accent);
+    font: 800 13px Consolas, monospace;
+}
+
+.feature h3 {
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 28px;
+}
+
+.feature p {
+    position: relative;
+    max-width: 460px;
+    margin-bottom: 0;
+    color: #bbc9c1;
+    font-size: 15px;
+}
+
+.feature-decor {
+    position: absolute;
+    top: -50px;
+    right: 12px;
+    font-size: 190px;
+    font-weight: 900;
+    opacity: .07;
+    pointer-events: none;
+}
+
+.other-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.small-contribution {
+    padding: 25px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.small-contribution h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.small-contribution p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.contribution-label {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* TECHNICAL SECTIONS */
+
+.technical-section {
+    padding: 88px 0;
+    border-top: 1px solid var(--line);
+}
+
+.technical-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 32px 56px;
+}
+
+.technical-description h2 {
+    margin-bottom: 22px;
+    font-size: clamp(32px, 4vw, 47px);
+}
+
+.technical-description p {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.technical-panel {
+    margin-top: 70px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: var(--panel);
+}
+
+.technical-panel-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font: 700 12px Consolas, monospace;
+}
+
+.language-tag {
+    padding: 5px 9px;
+    color: var(--accent);
+    background: var(--accent-dark);
+    border-radius: 5px;
+}
+
+.technical-points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.technical-points li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: #d1ddd6;
+    font-size: 14px;
+}
+
+.technical-points li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* FULL-WIDTH CODE VIEWER */
+
+.code-disclosure {
+    grid-column: 1 / -1;
+    min-width: 0;
+    border: 1px solid #536a56;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.code-disclosure summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 26px;
+    color: var(--accent);
+    background: #203029;
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.code-disclosure summary::-webkit-details-marker {
+    display: none;
+}
+
+.code-disclosure summary::after {
+    content: "+";
+    font-size: 25px;
+    line-height: 1;
+}
+
+.code-disclosure[open] summary::after {
+    content: "−";
+}
+
+.code-disclosure summary:hover {
+    background: #2b4032;
+}
+
+.code-disclosure pre {
+    width: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 30px;
+    overflow-x: auto;
+    overflow-y: visible;
+    border-top: 1px solid var(--line);
+    background: #0b1010;
+    tab-size: 4;
+}
+
+.code-disclosure code {
+    display: block;
+    color: #dce9df;
+    font: 14px/1.85 Consolas, "Courier New", monospace;
+    white-space: pre;
+}
+
+/* PREVIOUS AND NEXT PROJECTS */
+
+.project-navigation-section {
+    padding: 35px 0 90px;
+}
+
+.project-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-navigation-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.project-navigation-link:hover {
+    background: #25332a;
+    border-color: var(--accent);
+}
+
+.project-navigation-link.previous {
+    justify-content: flex-start;
+}
+
+.project-navigation-link.next {
+    text-align: right;
+}
+
+.project-navigation-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.project-navigation-link strong {
+    display: block;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.project-navigation-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 34px;
+    line-height: 1;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trailer-layout,
+    .technical-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .other-contributions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .technical-panel {
+        margin-top: 0;
+    }
+
+    .code-disclosure {
+        grid-column: 1;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+
+    .navigation {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links { gap: 20px; }
+    .hero { min-height: 580px; }
+    .hero-content { padding: 55px 0; }
+
+    .hero h1 {
+        font-size: clamp(48px, 12vw, 76px);
+    }
+
+    .hero-description { font-size: 15px; }
+
+    .content-section,
+    .technical-section {
+        padding: 60px 0;
+    }
+
+    .awards-section { padding-bottom: 55px; }
+
+    .award {
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .featured-contributions,
+    .other-contributions {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        min-height: 230px;
+        padding: 25px;
+    }
+
+    .feature-number { margin-bottom: 26px; }
+
+    .technical-panel {
+        margin-top: 0;
+        padding: 18px;
+    }
+
+    .code-disclosure summary { padding: 17px; }
+    .code-disclosure pre { padding: 16px; }
+    .code-disclosure code { font-size: 12px; }
+
+    .project-navigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-navigation-link {
+        padding: 24px;
+    }
+}
+
+/* TOUCH */
+
+@media (hover: none) {
+    .project-navigation-link:active,
+    .primary-link:active,
+    .secondary-link:active {
+        filter: brightness(1.15);
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    .project-navigation-link {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html#home">Yasmin Adas</a>
 
-            <div>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
+        <a href="index.html#home" class="brand">
+            Yasmin<span>.</span>Adas
+        </a>
 
-    <main>
-        <section class="project-detail">
+        <div class="nav-links">
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+</header>
 
-            <a class="back-link" href="index.html#projects">
-                ← Back to Projects
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+    <img
+        class="hero-image"
+        src="images/suboptimal.jpg"
+        alt="Underwater artwork from SUBOPTIMAL"
+    >
+
+    <div class="container hero-content">
+        <a class="back-link" href="index.html#projects">
+            ← Back to all projects
+        </a>
+
+        <div class="eyebrow">Featured Game Project</div>
+        <h1>SUBOPTIMAL</h1>
+
+        <p class="hero-role">
+            Gameplay &amp; AI Programmer / Unreal Engine 5 / C++
+        </p>
+
+        <div class="project-meta" aria-label="Project details">
+            <span>Team of 8</span>
+            <span>4 weeks</span>
+        </div>
+
+        <p class="hero-description">
+            An online co-op game about exploring the ocean,
+            surviving hostile creatures and collecting treasure.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="primary-link" href="#contributions">
+                Explore my work
+                <span class="link-arrow" aria-hidden="true">↓</span>
             </a>
 
-            <h1>SUBOPTIMAL</h1>
+            <a class="secondary-link" href="#trailer">
+                Watch trailer
+                <span class="link-arrow" aria-hidden="true">↓</span>
+            </a>
+        </div>
+    </div>
+</section>
 
-            <p class="project-subtitle">
-                Gameplay & AI Programmer · Unreal Engine 5 · C++
-            </p>
+<!-- AWARDS -->
 
-            <div class="project-awards">
-                <p>
-                    🏆 Winner – Best Co-op / Multiplayer Game ·
+<section class="awards-section">
+    <div class="container">
+        <p class="awards-heading">Awards &amp; Recognition</p>
+
+        <div class="awards-grid">
+
+            <div class="award award-winner">
+                <span class="award-icon">🏆</span>
+                <span class="award-status">Winner</span>
+                <strong class="award-title">
+                    Best Co-op / Multiplayer Game
+                </strong>
+                <span class="award-event">
                     Futuregames Awards 2026
-                </p>
-                <p>
-                    Nominated – Best Design · Futuregames Awards 2026
-                </p>
-                <p>
-                    Nominated – Game of the Year · Futuregames Awards 2026
-                </p>
-                <p>
-                    Nominated – Best Technology ·
-                    Swedish Game Awards, New Talent 2026
-                </p>
+                </span>
             </div>
 
-            <img
-                src="images/suboptimal.jpg"
-                alt="SUBOPTIMAL artwork"
-                class="project-hero-image"
-            >
+            <div class="award">
+                <span class="award-icon">✦</span>
+                <span class="award-status">Nominated</span>
+                <strong class="award-title">Best Design</strong>
+                <span class="award-event">
+                    Futuregames Awards 2026
+                </span>
+            </div>
 
-            <div class="project-detail-content">
+            <div class="award">
+                <span class="award-icon">✦</span>
+                <span class="award-status">Nominated</span>
+                <strong class="award-title">Game of the Year</strong>
+                <span class="award-event">
+                    Futuregames Awards 2026
+                </span>
+            </div>
 
-                <!-- About -->
-                <section>
-                    <h2>About the Game</h2>
+            <div class="award">
+                <span class="award-icon">✦</span>
+                <span class="award-status">Nominated</span>
+                <strong class="award-title">Best Technology</strong>
+                <span class="award-event">
+                    Swedish Game Awards – New Talent 2026
+                </span>
+            </div>
 
-                    <p>
-                        SUBOPTIMAL is a lighthearted online
-                        multiplayer game where divers navigate
-                        underwater hazards and hostile sea
-                        creatures while searching for treasure.
-                    </p>
-                </section>
+        </div>
+    </div>
+</section>
 
-                <!-- Trailer -->
-                <section>
-                    <h2>Gameplay Trailer</h2>
+<!-- TRAILER -->
 
-                    <div class="trailer-container">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/SMASByXMQdw"
-                            title="SUBOPTIMAL Gameplay Trailer"
-                            loading="lazy"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </section>
+<section class="content-section" id="trailer">
+    <div class="container trailer-layout">
+        <div>
+            <div class="eyebrow">01 / The Game</div>
+            <h2 class="section-title">Dive into the chaos.</h2>
+            <p class="section-intro">
+                See the submarine, underwater enemies
+                and hazards in action.
+            </p>
+        </div>
 
-                <!-- Contributions -->
-                <section>
-                    <h2>My Contributions</h2>
+        <div class="trailer-container">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/SMASByXMQdw"
+                title="SUBOPTIMAL Gameplay Trailer"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
 
-                    <p>
-                        I wrote the enemy behaviors and several
-                        underwater hazards in C++.
-                    </p>
+<!-- CONTRIBUTIONS -->
 
-                    <div class="contribution-list">
+<section class="content-section contributions-section" id="contributions">
+    <div class="container">
+        <div class="eyebrow">02 / My Work</div>
 
-                        <div class="contribution-item">
-                            <h3>Shark AI</h3>
-                            <p>
-                                A five-state AI system where the
-                                shark patrols, chases players,
-                                attacks, cools down and returns
-                                to its route.
-                            </p>
-                        </div>
+        <h2 class="section-title">What I Built</h2>
 
-                        <div class="contribution-item">
-                            <h3>Jellyfish</h3>
-                            <p>
-                                Spline-based movement and
-                                timer-controlled damage over
-                                time when a diver encounters
-                                a jellyfish.
-                            </p>
-                        </div>
+        <p class="section-intro">
+            I programmed the shark, jellyfish and squid,
+            along with the algae hazard and a player ping system.
+            The systems below show how I approached the AI and spawning logic.
+        </p>
 
-                        <div class="contribution-item">
-                            <h3>Squid</h3>
-                            <p>
-                                Spline movement and an ink
-                                attack that covers part of
-                                the submarine when it gets
-                                close enough.
-                            </p>
-                        </div>
+        <div class="featured-contributions">
 
-                        <div class="contribution-item">
-                            <h3>Algae Hazard</h3>
-                            <p>
-                                Algae spawn around the
-                                submarine's propeller when
-                                it enters an algae area.
-                            </p>
-                        </div>
+            <article class="feature feature-shark">
+                <span class="feature-decor" aria-hidden="true">01</span>
+                <span class="feature-number">01 / AI PROGRAMMING</span>
+                <h3>Shark AI</h3>
+                <p>
+                    A five-state AI system where the shark
+                    patrols, chases players, attacks,
+                    cools down and returns to its route.
+                    It can also switch targets when
+                    another diver is nearby.
+                </p>
+            </article>
 
-                        <div class="contribution-item">
-                            <h3>Ping System</h3>
-                            <p>
-                                Players can mark locations
-                                using a line trace from
-                                their camera, with a limit
-                                on how many pings they
-                                can place before a cooldown.
-                            </p>
-                        </div>
+            <article class="feature">
+                <span class="feature-decor" aria-hidden="true">02</span>
+                <span class="feature-number">02 / GAMEPLAY SYSTEM</span>
+                <h3>Algae Hazard</h3>
+                <p>
+                    A spawning system that places algae
+                    around the submarine's propeller
+                    when it enters an algae area.
+                    The positions are calculated using
+                    random distribution and local-space
+                    transformations.
+                </p>
+            </article>
 
-                        <div class="contribution-item">
-                            <h3>Patrol Paths</h3>
-                            <p>
-                                Created a PatrolPath actor
-                                using Unreal Engine splines
-                                to define routes for
-                                underwater enemies.
-                            </p>
-                        </div>
+        </div>
 
-                        <div class="contribution-item">
-                            <h3>Networking</h3>
-                            <p>
-                                Implemented server-side
-                                shark AI decisions and
-                                damage handling, replicated
-                                gameplay state and multicast
-                                audio effects.
-                            </p>
-                        </div>
+        <div class="other-contributions">
 
-                    </div>
-                </section>
+            <article class="small-contribution">
+                <span class="contribution-label">03 / ENEMY</span>
+                <h3>Jellyfish</h3>
+                <p>
+                    Spline-based movement and timed
+                    damage over time when a diver
+                    encounters a jellyfish.
+                </p>
+            </article>
 
-                <!-- Shark code -->
-                <section class="code-example">
-                    <h2>Shark State Machine</h2>
+            <article class="small-contribution">
+                <span class="contribution-label">04 / ENEMY</span>
+                <h3>Squid</h3>
+                <p>
+                    Spline movement and an ink attack
+                    that covers part of the submarine
+                    when it gets close.
+                </p>
+            </article>
 
-                    <p>
-                        The shark uses a switch-based
-                        finite state machine with five
-                        states. It follows a spline path,
-                        switches to chasing when a player
-                        enters its detection range and
-                        attacks when close enough.
-                    </p>
+            <article class="small-contribution">
+                <span class="contribution-label">05 / MULTIPLAYER</span>
+                <h3>Ping System</h3>
+                <p>
+                    Camera-based line tracing to mark
+                    locations, with a limit on pings
+                    and a cooldown.
+                </p>
+            </article>
 
-                    <p>
-                        When its target leaves the detection
-                        sphere, the shark checks for other
-                        nearby players. It picks the closest
-                        one who isn't knocked down, or
-                        returns to the point where it left
-                        its patrol if nobody is available.
-                    </p>
+            <article class="small-contribution">
+                <span class="contribution-label">06 / MOVEMENT</span>
+                <h3>Patrol Paths</h3>
+                <p>
+                    A reusable PatrolPath actor
+                    with Unreal Engine splines
+                    for underwater enemy routes.
+                </p>
+            </article>
 
-                    <p>
-                        The AI decisions run on the server.
-                        Clients receive replicated movement
-                        and state updates.
-                    </p>
+            <article class="small-contribution">
+                <span class="contribution-label">07 / NETWORKING</span>
+                <h3>Multiplayer Logic</h3>
+                <p>
+                    Server-side shark AI and damage,
+                    replicated gameplay state and
+                    multicast audio effects.
+                </p>
+            </article>
 
-                    <pre><code>void AShark::Tick(float DeltaTime)
+        </div>
+    </div>
+</section>
+
+<!-- SHARK -->
+
+<section class="technical-section" id="shark-code">
+    <div class="container technical-layout">
+
+        <div class="technical-description">
+            <div class="eyebrow">03 / Behind the Code</div>
+            <h2>Making the Shark Think</h2>
+
+            <p>
+                The shark uses a switch-based finite state
+                machine with five states. It follows a spline
+                until a player enters its detection range,
+                then starts chasing and attacking.
+            </p>
+
+            <p>
+                When the target leaves the detection sphere,
+                the shark looks for the closest available
+                diver who isn't knocked down. If nobody
+                is nearby, it returns to where it left
+                its patrol route.
+            </p>
+
+            <p>
+                The shark's AI decisions run on the server,
+                while movement and state are replicated
+                to clients.
+            </p>
+        </div>
+
+        <div class="technical-panel">
+            <div class="technical-panel-label">
+                <span>Shark.cpp</span>
+                <span class="language-tag">C++</span>
+            </div>
+
+            <ul class="technical-points">
+                <li>Five-state finite state machine</li>
+                <li>Spline-based patrol movement</li>
+                <li>Multiplayer-aware target switching</li>
+                <li>Server-authoritative AI decisions</li>
+            </ul>
+        </div>
+
+        <details class="code-disclosure">
+            <summary>View Shark C++ Code</summary>
+<pre><code>void AShark::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
     if (!HasAuthority()) return;
@@ -324,7 +1068,7 @@
 
             if (FVector::Dist(GetActorLocation(), PlayerRef-&gt;GetActorLocation()) &lt; AttackRange)
             {
-                if (GetWorld()-&gt;GetTimeSeconds() - RechargeTimestamp &gt;= 0.f)
+                if (GetWorld()-&gt;GetTimeSeconds() &gt;= RechargeTimestamp)
                     CurrentState = ESharkState::Attacking;
 
                 break;
@@ -359,40 +1103,63 @@
             break;
 
         case ESharkState::Recharging:
-            if (GetWorld()-&gt;GetTimeSeconds() - RechargeTimestamp &gt;= 0.f)
+            if (GetWorld()-&gt;GetTimeSeconds() &gt;= RechargeTimestamp)
                 CurrentState = ESharkState::Chasing;
             break;
     }
 }</code></pre>
+        </details>
 
-                    <p class="code-caption">
-                        From AShark::Tick() – original implementation,
-                        unchanged.
-                    </p>
-                </section>
+    </div>
+</section>
 
-                <!-- Algae code -->
-                <section class="code-example">
-                    <h2>Spawning Algae Around the Propeller</h2>
+<!-- ALGAE -->
 
-                    <p>
-                        When the submarine enters an algae
-                        area, algae spawn around its propeller.
-                        The spawn radius changes with height,
-                        creating an hourglass-shaped spread.
-                    </p>
+<section class="technical-section" id="algae-code">
+    <div class="container technical-layout">
 
-                    <p>
-                        I used the square root of a random
-                        value to distribute positions evenly
-                        across each circular area. The
-                        positions are calculated in local
-                        space and transformed into world
-                        space, so they follow the propeller's
-                        position and rotation.
-                    </p>
+        <div class="technical-description">
+            <div class="eyebrow">04 / Behind the Code</div>
+            <h2>Spawning Around the Propeller</h2>
 
-                    <pre><code>void AAlgaeSpawner::SpawnAlgae()
+            <p>
+                When the submarine enters an algae area,
+                algae spawn around its propeller.
+            </p>
+
+            <p>
+                I used a random height and a radius that
+                changes with height to create an
+                hourglass-shaped distribution. Taking
+                the square root of the random distance
+                keeps points spread evenly across each circle.
+            </p>
+
+            <p>
+                Spawn positions are calculated in the
+                propeller's local space and transformed
+                into world space, so they follow its
+                position and rotation.
+            </p>
+        </div>
+
+        <div class="technical-panel">
+            <div class="technical-panel-label">
+                <span>AlgaeSpawner.cpp</span>
+                <span class="language-tag">C++</span>
+            </div>
+
+            <ul class="technical-points">
+                <li>Procedural spawning</li>
+                <li>Randomized circular distribution</li>
+                <li>Radius variation based on height</li>
+                <li>Local-to-world coordinate transformation</li>
+            </ul>
+        </div>
+
+        <details class="code-disclosure">
+            <summary>View Algae C++ Code</summary>
+<pre><code>void AAlgaeSpawner::SpawnAlgae()
 {
     if (!PropellerRef || !AlgaeClass) return;
 
@@ -428,22 +1195,49 @@
         }
     }
 }</code></pre>
+        </details>
 
-                    <p class="code-caption">
-                        From AAlgaeSpawner::SpawnAlgae() –
-                        original implementation, unchanged.
-                    </p>
-                </section>
+    </div>
+</section>
 
-            </div>
+<!-- PREVIOUS AND NEXT PROJECTS -->
 
-            <!-- Next project -->
-            <a class="next-project" href="losttracks.html">
-                <span>NEXT PROJECT →</span>
-                <strong>Lost Tracks</strong>
+<section class="project-navigation-section">
+    <div class="container">
+        <nav class="project-navigation-grid" aria-label="Project navigation">
+
+            <a href="okrhamscreation.html" class="project-navigation-link previous">
+                <span class="project-navigation-arrow" aria-hidden="true">←</span>
+                <div>
+                    <span class="project-navigation-label">
+                        PREVIOUS PROJECT
+                    </span>
+                    <strong>Ok'Rhams Creation</strong>
+                </div>
             </a>
 
-        </section>
-    </main>
+            <a href="losttracks.html" class="project-navigation-link next">
+                <div>
+                    <span class="project-navigation-label">
+                        NEXT PROJECT
+                    </span>
+                    <strong>Lost Tracks</strong>
+                </div>
+                <span class="project-navigation-arrow" aria-hidden="true">→</span>
+            </a>
+
+        </nav>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <span>Yasmin Adas · Game Programmer</span>
+        <a href="index.html#projects">Back to Projects ↑</a>
+    </div>
+</footer>
+
 </body>
 </html>

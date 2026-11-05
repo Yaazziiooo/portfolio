@@ -2,299 +2,1027 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Last Flame - Game Programming by Yasmin Adas">
-    <title>The Last Flame | Yasmin Adas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Last Flame – UI and input programming by Yasmin Adas.">
+<title>The Last Flame | Yasmin Adas</title>
 
-    <style>
-        .trailer-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-        }
+<style>
+:root {
+    --bg: #110f0d;
+    --panel: #1d1915;
+    --panel-light: #29211a;
+    --line: #42352a;
+    --text: #f7f1e9;
+    --muted: #bdafa1;
+    --accent: #ffbd77;
+    --accent-dark: #423021;
+    --max-width: 1140px;
+}
 
-        .trailer-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .contribution-list {
-            display: grid;
-            gap: 22px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .contribution-item {
-            padding: 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        .contribution-item h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-        }
+a {
+    color: inherit;
+}
 
-        .contribution-item p {
-            margin: 0;
-        }
+img {
+    display: block;
+    max-width: 100%;
+}
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+h1, h2, h3, p {
+    margin-top: 0;
+}
 
-        .tech-tag {
-            padding: 8px 13px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--accent);
-            font-size: 13px;
-        }
+h1, h2, h3 {
+    line-height: 1.15;
+    letter-spacing: -.04em;
+}
 
-        /* Next project navigation */
-        .next-project {
-            display: block;
-            margin: 45px 0 20px;
-            padding: 25px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: border-color 0.2s ease;
-        }
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
 
-        .next-project:hover,
-        .next-project:focus-visible {
-            border-color: var(--accent);
-        }
+/* NAVIGATION */
 
-        .next-project span {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-size: 13px;
-        }
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
 
-        .next-project strong {
-            color: var(--text);
-            font-size: 22px;
-        }
+.navigation {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .next-project {
-                transition: none;
-            }
-        }
-    </style>
+.brand {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 650px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #2b1a10;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(17, 13, 11, .88),
+            rgba(17, 13, 11, .48) 65%,
+            rgba(17, 13, 11, .18)
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg),
+            rgba(17, 15, 13, .12) 85%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 85px 0 75px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 45px;
+    color: #f0dfcc;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin-bottom: 25px;
+    font-size: clamp(55px, 9vw, 112px);
+    font-weight: 900;
+    line-height: .96;
+    letter-spacing: -.075em;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 25px;
+    color: #f2e2d2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.project-meta span {
+    white-space: nowrap;
+}
+
+.project-meta span::before {
+    content: "•";
+    margin-right: 6px;
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 560px;
+    color: #e4d4c5;
+    font-size: 17px;
+}
+
+/* HERO LINKS */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hero-link.secondary {
+    border-bottom-color: transparent;
+    color: #e1cfc0;
+}
+
+.hero-link:hover,
+.hero-link.secondary:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.link-arrow {
+    color: var(--accent);
+}
+
+/* AWARD */
+
+.awards-section {
+    padding: 22px 0 75px;
+}
+
+.awards-heading {
+    margin-bottom: 15px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.award {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 100%;
+    padding: 23px 28px;
+    border: 1px solid #8c6745;
+    border-radius: 11px;
+    background:
+        linear-gradient(125deg, #35271c, var(--panel));
+}
+
+.award-icon {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 30px;
+}
+
+.award-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.award-status {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.award-title {
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.award-event {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* CONTENT SECTIONS */
+
+.section {
+    padding: 85px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: clamp(34px, 4.5vw, 50px);
+    font-weight: 850;
+}
+
+.section-intro {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+/* VIDEO */
+
+.video-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.75fr;
+    align-items: center;
+    gap: 42px;
+}
+
+.video-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #000;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* MY CONTRIBUTIONS */
+
+.contributions-section {
+    background:
+        radial-gradient(
+            ellipse at 85% 10%,
+            rgba(221, 129, 51, .09),
+            transparent 55%
+        );
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 18px;
+    margin: 35px 0 18px;
+}
+
+.feature {
+    position: relative;
+    min-height: 250px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(245, 154, 77, .11),
+            transparent 55%
+        ),
+        var(--panel-light);
+}
+
+.feature-label {
+    display: block;
+    margin-bottom: 40px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+    letter-spacing: .07em;
+}
+
+.feature h3 {
+    margin-bottom: 14px;
+    font-size: 29px;
+}
+
+.feature p {
+    max-width: 480px;
+    margin: 0;
+    color: #d0bfb0;
+    font-size: 15px;
+}
+
+.more-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.contribution {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.contribution-label {
+    display: block;
+    margin-bottom: 19px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+}
+
+.contribution h3 {
+    margin-bottom: 11px;
+    font-size: 19px;
+}
+
+.contribution p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* TECHNOLOGIES */
+
+.technologies-section {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.tech-tag {
+    padding: 10px 15px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel);
+    color: #f0d5bb;
+    font-size: 14px;
+}
+
+/* PREVIOUS AND NEXT PROJECTS */
+
+.project-navigation-section {
+    padding: 45px 0 90px;
+    border-top: 1px solid var(--line);
+}
+
+.project-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-navigation-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.project-navigation-link:hover {
+    border-color: var(--accent);
+    background: #39291c;
+}
+
+.project-navigation-link.previous {
+    justify-content: flex-start;
+}
+
+.project-navigation-link.next {
+    text-align: right;
+}
+
+.project-navigation-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.project-navigation-link strong {
+    display: block;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.project-navigation-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 34px;
+    line-height: 1;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .video-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .more-contributions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 580px;
+    }
+
+    .hero-content {
+        padding: 55px 0 65px;
+    }
+
+    .back-link {
+        margin-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: clamp(50px, 11vw, 75px);
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .awards-section {
+        padding-bottom: 55px;
+    }
+
+    .award {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .featured-grid,
+    .more-contributions,
+    .project-navigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        min-height: 220px;
+        padding: 26px;
+    }
+
+    .feature-label {
+        margin-bottom: 25px;
+    }
+
+    .contribution {
+        padding: 24px;
+    }
+
+    .technologies-section {
+        padding: 55px 0;
+    }
+
+    .project-navigation-link {
+        padding: 24px;
+    }
+}
+
+/* TOUCH */
+
+@media (hover: none) {
+    .project-navigation-link:active,
+    .hero-link:active {
+        filter: brightness(1.15);
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .project-navigation-link {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html#home">Yasmin Adas</a>
 
-            <div>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<!-- NAVIGATION -->
 
-    <main>
-        <section class="project-detail">
+<header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
 
-            <a class="back-link" href="index.html#projects">
-                ← Back to Projects
+        <a href="index.html#home" class="brand">
+            Yasmin<span>.</span>Adas
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img
+        class="hero-image"
+        src="images/thelastflame.png"
+        alt="The Last Flame gameplay artwork"
+    >
+
+    <div class="container hero-content">
+
+        <a class="back-link" href="index.html#projects">
+            ← Back to all projects
+        </a>
+
+        <div class="eyebrow">
+            Game Project
+        </div>
+
+        <h1>The Last Flame</h1>
+
+        <div class="project-meta" aria-label="Project details">
+            <span>Team of 14</span>
+            <span>3 weeks</span>
+            <span>Unity</span>
+            <span>C#</span>
+        </div>
+
+        <p class="hero-description">
+            Play as Aurelia, a fire spirit trying to survive
+            in a frozen world. Explore the environment
+            and keep her flame alive as you make your way forward.
+        </p>
+
+        <div class="hero-actions">
+
+            <a class="hero-link" href="#my-work">
+                Explore my work
+                <span class="link-arrow" aria-hidden="true">↓</span>
             </a>
 
-            <h1>The Last Flame</h1>
+            <a class="hero-link secondary" href="#gameplay-video">
+                Watch gameplay
+                <span class="link-arrow" aria-hidden="true">↓</span>
+            </a>
 
-            <p class="project-subtitle">
-                Game Programmer · Unity · C#
+        </div>
+
+    </div>
+</section>
+
+<!-- AWARDS -->
+
+<section class="awards-section">
+    <div class="container">
+
+        <p class="awards-heading">
+            Awards &amp; Recognition
+        </p>
+
+        <div class="award">
+
+            <span class="award-icon" aria-hidden="true">✦</span>
+
+            <div class="award-content">
+                <span class="award-status">
+                    Nominated
+                </span>
+
+                <strong class="award-title">
+                    Best Narrative
+                </strong>
+
+                <span class="award-event">
+                    Futuregames Awards
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- GAMEPLAY VIDEO -->
+
+<section class="section" id="gameplay-video">
+    <div class="container video-layout">
+
+        <div>
+
+            <div class="eyebrow">
+                01 / The Game
+            </div>
+
+            <h2 class="section-title">
+                Gameplay
+            </h2>
+
+            <p class="section-intro">
+                Watch Aurelia explore the frozen world
+                and navigate its dangers.
             </p>
 
-            <div class="project-awards">
-                <p>Nominated – Best Narrative, Futuregames Awards</p>
-            </div>
+        </div>
 
-            <img
-                src="images/thelastflame.png"
-                alt="The Last Flame gameplay"
-                class="project-hero-image"
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/nUDnp9h0c_w"
+                title="The Last Flame Gameplay Video"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- MY CONTRIBUTIONS -->
+
+<section class="section contributions-section" id="my-work">
+    <div class="container">
+
+        <div class="eyebrow">
+            02 / My Work
+        </div>
+
+        <h2 class="section-title">
+            What I Built
+        </h2>
+
+        <div class="featured-grid">
+
+            <!-- UI AND MENUS -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    01 / UI PROGRAMMING
+                </span>
+
+                <h3>
+                    UI and Menu Systems
+                </h3>
+
+                <p>
+                    Built the game's menus and settings,
+                    including button interactions and
+                    navigation between screens.
+                </p>
+
+            </article>
+
+            <!-- GAMEPLAY HUD -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    02 / GAMEPLAY UI
+                </span>
+
+                <h3>
+                    Gameplay HUD
+                </h3>
+
+                <p>
+                    Connected health bars, score counters
+                    and interactive icons to gameplay systems,
+                    allowing the HUD to update as the
+                    game state changes.
+                </p>
+
+            </article>
+
+        </div>
+
+        <div class="more-contributions">
+
+            <!-- INPUT SYSTEM -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    03 / INPUT PROGRAMMING
+                </span>
+
+                <h3>
+                    Unity Input System
+                </h3>
+
+                <p>
+                    Set up keyboard and controller support,
+                    connecting player actions to gameplay
+                    interactions and menu navigation.
+                </p>
+
+            </article>
+
+            <!-- KEY REBINDING -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    04 / CONTROLS
+                </span>
+
+                <h3>
+                    Key Rebinding
+                </h3>
+
+                <p>
+                    Added key rebinding to the settings menu,
+                    allowing players to customize their
+                    keyboard controls.
+                </p>
+
+            </article>
+
+            <!-- RESPONSIVE UI -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    05 / UI LAYOUT
+                </span>
+
+                <h3>
+                    Responsive UI
+                </h3>
+
+                <p>
+                    Adjusted menus and HUD layouts for
+                    different screen resolutions to keep
+                    everything readable and correctly positioned.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+
+<section class="technologies-section">
+    <div class="container">
+
+        <div class="eyebrow">
+            03 / Technologies
+        </div>
+
+        <h2 class="section-title">
+            Tools &amp; Systems
+        </h2>
+
+        <div class="tech-tags">
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">UI Programming</span>
+            <span class="tech-tag">Input System</span>
+            <span class="tech-tag">Key Rebinding</span>
+            <span class="tech-tag">Controller Support</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- PREVIOUS AND NEXT PROJECTS -->
+
+<section class="project-navigation-section">
+    <div class="container">
+
+        <nav class="project-navigation-grid" aria-label="Project navigation">
+
+            <a
+                href="losttracks.html"
+                class="project-navigation-link previous"
             >
 
-            <div class="project-detail-content">
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    ←
+                </span>
 
-                <!-- About -->
-                <section>
-                    <h2>About the Game</h2>
-                    <p>
-                        The Last Flame is a story-driven
-                        survival and exploration game set
-                        in a frozen, dying world.
-                    </p>
-                    <p>
-                        Players take on the role of Aurelia,
-                        a mystical fox spirit of fire,
-                        navigating a desolate landscape
-                        while struggling to keep her flame
-                        alive.
-                    </p>
-                </section>
+                <div>
+                    <span class="project-navigation-label">
+                        PREVIOUS PROJECT
+                    </span>
 
-                <!-- Gameplay video -->
-                <section>
-                    <h2>Gameplay Video</h2>
+                    <strong>
+                        Lost Tracks
+                    </strong>
+                </div>
 
-                    <div class="trailer-container">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/nUDnp9h0c_w"
-                            title="The Last Flame Gameplay Video"
-                            loading="lazy"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </section>
-
-                <!-- Contributions -->
-                <section>
-                    <h2>My Contributions</h2>
-
-                    <p>
-                        My responsibilities focused on
-                        UI programming and input systems,
-                        creating functional menus,
-                        gameplay interfaces and adaptable
-                        controls using Unity and C#.
-                    </p>
-
-                    <div class="contribution-list">
-
-                        <div class="contribution-item">
-                            <h3>UI and Menu Systems</h3>
-                            <p>
-                                Implemented interactive menus,
-                                settings and gameplay UI
-                                components using Unity's
-                                UI system and C#.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Gameplay HUD</h3>
-                            <p>
-                                Developed interface elements
-                                including health bars,
-                                score counters and
-                                interactive icons, with
-                                dynamic updates linked
-                                to gameplay.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Unity Input System</h3>
-                            <p>
-                                Implemented input handling
-                                for keyboard and controller,
-                                supporting menu navigation
-                                and gameplay interactions.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Key Rebinding</h3>
-                            <p>
-                                Implemented configurable
-                                key bindings through Unity's
-                                Input System, giving
-                                players more flexibility
-                                over their controls.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Responsive UI</h3>
-                            <p>
-                                Worked on adapting interface
-                                elements to different
-                                screen sizes while keeping
-                                the UI functional and
-                                visually consistent.
-                            </p>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Technical highlights -->
-                <section>
-                    <h2>Technical Highlights</h2>
-
-                    <h3>Flexible Input Handling</h3>
-                    <p>
-                        I worked with Unity's Input System
-                        to support both keyboard and
-                        controller input.
-                    </p>
-                    <p>
-                        The system included key rebinding
-                        functionality, allowing players
-                        to customize their controls and
-                        providing a more flexible
-                        interaction experience.
-                    </p>
-
-                    <h3>Gameplay UI Integration</h3>
-                    <p>
-                        A key part of my work involved
-                        connecting UI elements to gameplay
-                        systems so that information such
-                        as health and score could update
-                        dynamically.
-                    </p>
-                    <p>
-                        I also worked closely with designers
-                        and programmers to align the
-                        interface with the game's
-                        visual style and gameplay needs.
-                    </p>
-                </section>
-
-                <!-- Technologies -->
-                <section>
-                    <h2>Technologies</h2>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unity</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">UI Programming</span>
-                        <span class="tech-tag">Unity Input System</span>
-                        <span class="tech-tag">Key Rebinding</span>
-                        <span class="tech-tag">Controller Support</span>
-                        <span class="tech-tag">Gameplay HUD</span>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- Next Project -->
-            <a class="next-project" href="ratatosk.html">
-                <span>NEXT PROJECT →</span>
-                <strong>Ratatosk</strong>
             </a>
 
-        </section>
-    </main>
+            <a
+                href="ratatosk.html"
+                class="project-navigation-link next"
+            >
+
+                <div>
+                    <span class="project-navigation-label">
+                        NEXT PROJECT
+                    </span>
+
+                    <strong>
+                        Ratatosk
+                    </strong>
+                </div>
+
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    →
+                </span>
+
+            </a>
+
+        </nav>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <div class="container footer-inner">
+
+        <span>
+            Yasmin Adas · Game Programmer
+        </span>
+
+        <a href="index.html#projects">
+            Back to Projects ↑
+        </a>
+
+    </div>
+</footer>
+
 </body>
 </html>

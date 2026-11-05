@@ -2,295 +2,911 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ratatosk - UI Programming by Yasmin Adas">
-    <title>Ratatosk | Yasmin Adas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ratatosk – UI programming and gameplay systems by Yasmin Adas.">
+<title>Ratatosk | Yasmin Adas</title>
 
-    <style>
-        .trailer-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-        }
+<style>
+:root {
+    --bg: #0c1410;
+    --panel: #17231b;
+    --panel-light: #213126;
+    --line: #384a3b;
+    --text: #f4f5e9;
+    --muted: #adbcac;
+    --accent: #e3c87c;
+    --accent-light: #f5e4af;
+    --green: #94b88c;
+    --max-width: 1140px;
+}
 
-        .trailer-container iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .contribution-list {
-            display: grid;
-            gap: 22px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .contribution-item {
-            padding: 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        .contribution-item h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-        }
+a {
+    color: inherit;
+}
 
-        .contribution-item p {
-            margin: 0;
-        }
+img {
+    display: block;
+    max-width: 100%;
+}
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+h1, h2, h3, p {
+    margin-top: 0;
+}
 
-        .tech-tag {
-            padding: 8px 13px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--accent);
-            font-size: 13px;
-        }
+h1, h2, h3 {
+    line-height: 1.15;
+    letter-spacing: -.04em;
+}
 
-        /* Next project navigation */
-        .next-project {
-            display: block;
-            margin: 45px 0 20px;
-            padding: 25px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: border-color 0.2s ease;
-        }
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
 
-        .next-project:hover,
-        .next-project:focus-visible {
-            border-color: var(--accent);
-        }
+/* NAVIGATION */
 
-        .next-project span {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-size: 13px;
-        }
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
 
-        .next-project strong {
-            color: var(--text);
-            font-size: 22px;
-        }
+.navigation {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .next-project {
-                transition: none;
-            }
-        }
-    </style>
+.brand {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 650px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #192d1d;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 20, 12, .91),
+            rgba(8, 20, 12, .55) 62%,
+            rgba(8, 20, 12, .18)
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg),
+            rgba(12, 20, 16, .12) 85%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 85px 0 75px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 45px;
+    color: #e2e9d7;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin-bottom: 25px;
+    font-size: clamp(60px, 10vw, 116px);
+    font-weight: 900;
+    line-height: .96;
+    letter-spacing: -.075em;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 25px;
+    color: #e3edda;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.project-meta span {
+    white-space: nowrap;
+}
+
+.project-meta span::before {
+    content: "•";
+    margin-right: 6px;
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 590px;
+    color: #dce4d6;
+    font-size: 17px;
+}
+
+/* HERO LINKS */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hero-link.secondary {
+    border-bottom-color: transparent;
+    color: #d5e0cf;
+}
+
+.hero-link:hover,
+.hero-link.secondary:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.link-arrow {
+    color: var(--accent);
+}
+
+/* CONTENT SECTIONS */
+
+.section {
+    padding: 85px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: clamp(34px, 4.5vw, 50px);
+    font-weight: 850;
+}
+
+.section-intro {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+/* GAMEPLAY VIDEO */
+
+.video-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.75fr;
+    align-items: center;
+    gap: 42px;
+}
+
+.video-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #000;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* MY CONTRIBUTIONS */
+
+.contributions-section {
+    background:
+        radial-gradient(
+            ellipse at 85% 10%,
+            rgba(136, 177, 111, .09),
+            transparent 55%
+        );
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 35px 0 18px;
+}
+
+.feature {
+    position: relative;
+    min-height: 265px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            circle at 95% 0%,
+            rgba(227, 200, 124, .1),
+            transparent 55%
+        ),
+        var(--panel-light);
+}
+
+.feature-label {
+    display: block;
+    margin-bottom: 45px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+    letter-spacing: .07em;
+}
+
+.feature h3 {
+    margin-bottom: 14px;
+    font-size: clamp(23px, 3vw, 29px);
+}
+
+.feature p {
+    max-width: 500px;
+    margin: 0;
+    color: #c7d3c3;
+    font-size: 15px;
+}
+
+.more-contributions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.contribution {
+    padding: 30px 34px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+.contribution-label {
+    display: block;
+    margin-bottom: 28px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+}
+
+.contribution h3 {
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+.contribution p {
+    max-width: 490px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* TECHNOLOGIES */
+
+.technologies-section {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.tech-tag {
+    padding: 10px 15px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel);
+    color: #e5e9cc;
+    font-size: 14px;
+}
+
+/* PREVIOUS AND NEXT PROJECTS */
+
+.project-navigation-section {
+    padding: 45px 0 90px;
+    border-top: 1px solid var(--line);
+}
+
+.project-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-navigation-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.project-navigation-link:hover {
+    border-color: var(--accent);
+    background: #30432e;
+}
+
+.project-navigation-link.previous {
+    justify-content: flex-start;
+}
+
+.project-navigation-link.next {
+    text-align: right;
+}
+
+.project-navigation-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.project-navigation-link strong {
+    display: block;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.project-navigation-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 34px;
+    line-height: 1;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .video-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 580px;
+    }
+
+    .hero-content {
+        padding: 55px 0 65px;
+    }
+
+    .back-link {
+        margin-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 12vw, 75px);
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .featured-grid,
+    .more-contributions,
+    .project-navigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        min-height: 220px;
+        padding: 26px;
+    }
+
+    .feature-label {
+        margin-bottom: 26px;
+    }
+
+    .contribution {
+        padding: 26px;
+    }
+
+    .technologies-section {
+        padding: 55px 0;
+    }
+
+    .project-navigation-link {
+        padding: 24px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .project-navigation-link {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html#home">Yasmin Adas</a>
 
-            <div>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<!-- NAVIGATION -->
 
-    <main>
-        <section class="project-detail">
+<header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
 
-            <a class="back-link" href="index.html#projects">
-                ← Back to Projects
+        <a href="index.html#home" class="brand">
+            Yasmin<span>.</span>Adas
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img
+        class="hero-image"
+        src="images/ratatosk.jpg"
+        alt="Ratatosk gameplay artwork"
+    >
+
+    <div class="container hero-content">
+
+        <a class="back-link" href="index.html#projects">
+            ← Back to all projects
+        </a>
+
+        <div class="eyebrow">
+            Game Project
+        </div>
+
+        <h1>Ratatosk</h1>
+
+        <div class="project-meta" aria-label="Project details">
+            <span>Team of 9</span>
+            <span>3 weeks</span>
+            <span>Unity</span>
+            <span>C#</span>
+        </div>
+
+        <p class="hero-description">
+            Collect nuts, dodge obstacles and watch out for
+            hostile squirrels in Ratatosk. Choose between
+            Chill and Thrill modes for two different ways to play.
+        </p>
+
+        <div class="hero-actions">
+
+            <a class="hero-link" href="#my-work">
+                Explore my work
+                <span class="link-arrow" aria-hidden="true">↓</span>
             </a>
 
-            <h1>Ratatosk</h1>
+            <a class="hero-link secondary" href="#gameplay-video">
+                Watch gameplay
+                <span class="link-arrow" aria-hidden="true">↓</span>
+            </a>
 
-            <p class="project-subtitle">
-                UI Programmer · Unity · C#
+        </div>
+
+    </div>
+</section>
+
+<!-- GAMEPLAY VIDEO -->
+
+<section class="section" id="gameplay-video">
+    <div class="container video-layout">
+
+        <div>
+
+            <div class="eyebrow">
+                01 / The Game
+            </div>
+
+            <h2 class="section-title">
+                Gameplay
+            </h2>
+
+            <p class="section-intro">
+                See Ratatosk in action, including its
+                environments, obstacles and different
+                gameplay modes.
             </p>
 
-            <img
-                src="images/ratatosk.jpg"
-                alt="Ratatosk artwork"
-                class="project-hero-image"
+        </div>
+
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/TZFOTIkZYZM"
+                title="Ratatosk Gameplay Trailer"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- MY CONTRIBUTIONS -->
+
+<section class="section contributions-section" id="my-work">
+    <div class="container">
+
+        <div class="eyebrow">
+            02 / My Work
+        </div>
+
+        <h2 class="section-title">
+            What I Built
+        </h2>
+
+        <p class="section-intro">
+            As one of four programmers on the team,
+            my main focus was UI implementation.
+            I also worked on audio settings and
+            the game's day-to-night cycle.
+        </p>
+
+        <div class="featured-grid">
+
+            <!-- UI AND MENUS -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    01 / UI PROGRAMMING
+                </span>
+
+                <h3>
+                    UI and Menu Systems
+                </h3>
+
+                <p>
+                    Built the game's menus using Unity UI,
+                    handling button interactions, navigation
+                    between screens and gameplay-related
+                    interface functionality.
+                </p>
+
+            </article>
+
+            <!-- END SCREENS -->
+
+            <article class="feature">
+
+                <span class="feature-label">
+                    02 / GAMEPLAY UI
+                </span>
+
+                <h3>
+                    Score-Based End Screens &amp; Game Over
+                </h3>
+
+                <p>
+                    Built a score-based ending system that
+                    displays different end screens depending
+                    on the player's final score. In Thrill Mode,
+                    the Game Over screen also lets players
+                    restart or return to the main menu.
+                </p>
+
+            </article>
+
+        </div>
+
+        <div class="more-contributions">
+
+            <!-- AUDIO SETTINGS -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    03 / AUDIO
+                </span>
+
+                <h3>
+                    Audio Settings
+                </h3>
+
+                <p>
+                    Integrated Unity's Audio Mixer with volume
+                    sliders in the settings menu, allowing
+                    players to adjust music and sound
+                    effects separately.
+                </p>
+
+            </article>
+
+            <!-- DAY TO NIGHT -->
+
+            <article class="contribution">
+
+                <span class="contribution-label">
+                    04 / GAME SYSTEMS
+                </span>
+
+                <h3>
+                    Day-to-Night Cycle
+                </h3>
+
+                <p>
+                    Worked on the day-to-night cycle,
+                    synchronizing lighting changes with
+                    gameplay timing to create a smoother
+                    transition into the end-of-game sequence.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+
+<section class="technologies-section">
+    <div class="container">
+
+        <div class="eyebrow">
+            03 / Technologies
+        </div>
+
+        <h2 class="section-title">
+            Tools &amp; Systems
+        </h2>
+
+        <div class="tech-tags">
+            <span class="tech-tag">Unity</span>
+            <span class="tech-tag">C#</span>
+            <span class="tech-tag">UI Programming</span>
+            <span class="tech-tag">Unity Canvas</span>
+            <span class="tech-tag">Audio Mixer</span>
+            <span class="tech-tag">UI Sliders</span>
+            <span class="tech-tag">Day-Night Cycle</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- PREVIOUS AND NEXT PROJECTS -->
+
+<section class="project-navigation-section">
+    <div class="container">
+
+        <nav class="project-navigation-grid" aria-label="Project navigation">
+
+            <a
+                href="thelastflame.html"
+                class="project-navigation-link previous"
             >
 
-            <div class="project-detail-content">
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    ←
+                </span>
 
-                <!-- About the game -->
-                <section>
-                    <h2>About the Game</h2>
+                <div>
+                    <span class="project-navigation-label">
+                        PREVIOUS PROJECT
+                    </span>
 
-                    <p>
-                        Ratatosk is a game where players collect
-                        nuts while avoiding obstacles and enemies,
-                        including trees and hostile squirrels.
-                    </p>
+                    <strong>
+                        The Last Flame
+                    </strong>
+                </div>
 
-                    <p>
-                        The game features two modes: Chill and
-                        Thrill, offering different gameplay
-                        experiences.
-                    </p>
-                </section>
-
-                <!-- Gameplay trailer -->
-                <section>
-                    <h2>Gameplay Trailer</h2>
-
-                    <div class="trailer-container">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/TZFOTIkZYZM"
-                            title="Ratatosk Gameplay Trailer"
-                            loading="lazy"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </section>
-
-                <!-- My contributions -->
-                <section>
-                    <h2>My Contributions</h2>
-
-                    <p>
-                        As one of four programmers on the team,
-                        I was primarily responsible for UI
-                        implementation and also contributed
-                        to the game's day-to-night cycle.
-                    </p>
-
-                    <div class="contribution-list">
-
-                        <div class="contribution-item">
-                            <h3>UI and Menu Systems</h3>
-                            <p>
-                                Implemented interactive menus
-                                using Unity's Canvas and UI
-                                Button components, including
-                                navigation and gameplay-related
-                                interface functionality.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Score-Based End Screens</h3>
-                            <p>
-                                Developed UI logic that displays
-                                different ending visuals based
-                                on the player's final score,
-                                using separate score ranges.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Game Over Interface</h3>
-                            <p>
-                                Implemented the Game Over
-                                interface for Thrill Mode,
-                                including Play Again and
-                                Main Menu buttons.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Audio Settings</h3>
-                            <p>
-                                Connected Unity's Audio Mixer
-                                to UI sliders, allowing players
-                                to adjust music and sound
-                                effects volume through the
-                                settings menu.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Day-to-Night Cycle</h3>
-                            <p>
-                                Contributed to a time-based
-                                lighting system that transitions
-                                between day and night,
-                                supporting the game's
-                                atmosphere and end-of-game
-                                sequence.
-                            </p>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Technical highlights -->
-                <section>
-                    <h2>Technical Highlights</h2>
-
-                    <h3>Audio Mixer Integration</h3>
-                    <p>
-                        One of my technical challenges was
-                        learning how to integrate Unity's
-                        Audio Mixer with UI controls.
-                    </p>
-
-                    <p>
-                        I implemented slider-based volume
-                        adjustments for different audio
-                        categories, allowing players to
-                        configure the sound through the
-                        settings interface.
-                    </p>
-
-                    <h3>Gameplay and UI Synchronization</h3>
-                    <p>
-                        The day-to-night cycle also required
-                        coordination between lighting changes
-                        and gameplay timing.
-                    </p>
-
-                    <p>
-                        I contributed to implementing the
-                        cycle and resolving timing issues
-                        around the end-of-game transition,
-                        helping create a smoother experience
-                        instead of an abrupt ending.
-                    </p>
-                </section>
-
-                <!-- Technologies -->
-                <section>
-                    <h2>Technologies</h2>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unity</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">UI Programming</span>
-                        <span class="tech-tag">Unity Canvas</span>
-                        <span class="tech-tag">Audio Mixer</span>
-                        <span class="tech-tag">UI Sliders</span>
-                        <span class="tech-tag">Day-Night Cycle</span>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- Next Project -->
-            <a class="next-project" href="okrhamscreation.html">
-                <span>NEXT PROJECT →</span>
-                <strong>Ok'Rhams Creation</strong>
             </a>
 
-        </section>
-    </main>
+            <a
+                href="okrhamscreation.html"
+                class="project-navigation-link next"
+            >
+
+                <div>
+                    <span class="project-navigation-label">
+                        NEXT PROJECT
+                    </span>
+
+                    <strong>
+                        Ok'Rhams Creation
+                    </strong>
+                </div>
+
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    →
+                </span>
+
+            </a>
+
+        </nav>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <div class="container footer-inner">
+
+        <span>
+            Yasmin Adas · Game Programmer
+        </span>
+
+        <a href="index.html#projects">
+            Back to Projects ↑
+        </a>
+
+    </div>
+</footer>
+
 </body>
 </html>

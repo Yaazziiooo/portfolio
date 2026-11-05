@@ -2,339 +2,1342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lost Tracks - Unity C# Gameplay Programming by Yasmin Adas">
-    <title>Lost Tracks | Yasmin Adas</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lost Tracks – A solo Unity C# game project by Yasmin Adas.">
+<title>Lost Tracks | Yasmin Adas</title>
 
-    <style>
-        .losttracks-hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            width: 100%;
-            min-height: 300px;
-            aspect-ratio: 16 / 9;
-            padding: 30px;
-            background: linear-gradient(135deg, #282331, #47344d);
-            border-radius: 8px;
-            text-align: center;
-        }
+<style>
+:root {
+    --bg: #0d0c12;
+    --panel: #191620;
+    --panel-light: #241d2d;
+    --line: #393044;
+    --text: #f5f0f8;
+    --muted: #b6aabf;
+    --accent: #e6b5fc;
+    --accent-dark: #35243e;
+    --max-width: 1140px;
+}
 
-        .losttracks-hero strong {
-            font-size: clamp(32px, 5vw, 56px);
-            line-height: 1.2;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .losttracks-hero span {
-            color: #d0d2d6;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .contribution-list {
-            display: grid;
-            gap: 22px;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        .contribution-item {
-            padding: 22px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
+a {
+    color: inherit;
+}
 
-        .contribution-item h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-        }
+h1, h2, h3, p {
+    margin-top: 0;
+}
 
-        .contribution-item p {
-            margin: 0;
-        }
+h1, h2, h3 {
+    line-height: 1.15;
+    letter-spacing: -.04em;
+}
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
 
-        .tech-tag {
-            padding: 8px 13px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            color: var(--accent);
-            font-size: 13px;
-        }
+/* NAVIGATION */
 
-        /* Next project navigation */
-        .next-project {
-            display: block;
-            margin: 45px 0 20px;
-            padding: 25px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: border-color 0.2s ease;
-        }
+.site-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
 
-        .next-project:hover,
-        .next-project:focus-visible {
-            border-color: var(--accent);
-        }
+.navigation {
+    min-height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
 
-        .next-project span {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-size: 13px;
-        }
+.brand {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    text-decoration: none;
+}
 
-        .next-project strong {
-            color: var(--text);
-            font-size: 22px;
-        }
+.brand span {
+    color: var(--accent);
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .next-project {
-                transition: none;
-            }
-        }
-    </style>
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 610px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 75% 45%,
+            rgba(174, 92, 200, .32),
+            transparent 44%
+        ),
+        radial-gradient(
+            ellipse at 15% 75%,
+            rgba(99, 60, 144, .24),
+            transparent 55%
+        ),
+        linear-gradient(125deg, #121019, #30203b);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(0deg, var(--bg), transparent 30%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 70px 0 90px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 60px;
+    color: #ded1e7;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    max-width: 740px;
+    margin-bottom: 26px;
+    font-size: clamp(62px, 11vw, 125px);
+    font-weight: 900;
+    line-height: .94;
+    letter-spacing: -.085em;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 24px;
+    color: #eee1f3;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.project-meta span {
+    white-space: nowrap;
+}
+
+.project-meta span::before {
+    content: "•";
+    margin-right: 6px;
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 560px;
+    color: #d4c4df;
+    font-size: 17px;
+}
+
+/* HERO LINK */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.hero-link:hover {
+    color: var(--accent);
+}
+
+.link-arrow {
+    color: var(--accent);
+}
+
+/* DECORATIVE RECORD */
+
+.record-art {
+    position: absolute;
+    width: min(43vw, 490px);
+    aspect-ratio: 1;
+    top: 19%;
+    right: -3%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at center,
+            #d99be9 0 5%,
+            #43304d 5.5% 14%,
+            #1c1722 14.5% 16%,
+            #302637 16.5% 18%,
+            #141219 18.5% 27%,
+            #2d2533 27.5% 28%,
+            #17141e 28.5% 35%,
+            #302637 35.5% 36%,
+            #17141e 36.5% 45%,
+            #302637 45.5% 46%,
+            #17141e 46.5%);
+    border: 1px solid rgba(231, 186, 249, .18);
+    box-shadow: 0 0 110px rgba(190, 105, 210, .18);
+    opacity: .75;
+    pointer-events: none;
+}
+
+.record-art::before {
+    content: "";
+    position: absolute;
+    inset: 7%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .09);
+}
+
+/* SECTIONS */
+
+.section {
+    padding: 85px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section h2 {
+    margin-bottom: 22px;
+    font-size: clamp(34px, 4.5vw, 50px);
+    font-weight: 850;
+}
+
+.intro-layout {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 65px;
+}
+
+.intro-layout p {
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+/* GAMEPLAY LOOP */
+
+.gameplay-section {
+    background:
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(162, 96, 190, .08),
+            transparent 55%
+        );
+}
+
+.gameplay-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.gameplay-step {
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+.step-number {
+    display: block;
+    margin-bottom: 40px;
+    color: var(--accent);
+    font: 800 14px Consolas, monospace;
+}
+
+.gameplay-step h3 {
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.gameplay-step p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* CONTRIBUTIONS */
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 18px;
+    margin: 36px 0 18px;
+}
+
+.feature {
+    position: relative;
+    min-height: 260px;
+    padding: 34px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(208, 135, 237, .16),
+            transparent 55%
+        ),
+        var(--panel-light);
+}
+
+.feature-label {
+    display: block;
+    margin-bottom: 43px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+    letter-spacing: .07em;
+}
+
+.feature h3 {
+    margin-bottom: 12px;
+    font-size: 29px;
+}
+
+.feature p {
+    max-width: 480px;
+    margin: 0;
+    color: #cabbd2;
+    font-size: 15px;
+}
+
+.more-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.contribution {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.contribution-label {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--accent);
+    font: 800 12px Consolas, monospace;
+}
+
+.contribution h3 {
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+
+.contribution p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* TECHNICAL SECTIONS */
+
+.technical-section {
+    padding: 88px 0;
+    border-top: 1px solid var(--line);
+}
+
+.technical-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+    align-items: start;
+    gap: 32px 56px;
+}
+
+.technical-description h2 {
+    margin-bottom: 22px;
+    font-size: clamp(32px, 4vw, 47px);
+}
+
+.technical-description p {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.technical-panel {
+    margin-top: 65px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: var(--panel);
+}
+
+.technical-panel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font: 700 12px Consolas, monospace;
+}
+
+.language-tag {
+    padding: 5px 9px;
+    color: var(--accent);
+    background: var(--accent-dark);
+    border-radius: 5px;
+}
+
+.technical-points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.technical-points li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: #e6d9ed;
+    font-size: 14px;
+}
+
+.technical-points li::before {
+    content: "✓";
+    flex-shrink: 0;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* EXPANDABLE CODE */
+
+.code-disclosure {
+    grid-column: 1 / -1;
+    min-width: 0;
+    border: 1px solid #745780;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.code-disclosure summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 26px;
+    color: var(--accent);
+    background: #30223b;
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.code-disclosure summary::-webkit-details-marker {
+    display: none;
+}
+
+.code-disclosure summary::after {
+    content: "+";
+    font-size: 25px;
+    line-height: 1;
+}
+
+.code-disclosure[open] summary::after {
+    content: "−";
+}
+
+.code-disclosure summary:hover {
+    background: #3e2b4b;
+}
+
+.code-disclosure pre {
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    overflow-x: auto;
+    border-top: 1px solid var(--line);
+    background: #0c0b11;
+    tab-size: 4;
+}
+
+.code-disclosure code {
+    display: block;
+    color: #eee2f4;
+    font: 14px/1.85 Consolas, "Courier New", monospace;
+    white-space: pre;
+}
+
+/* PREVIOUS AND NEXT PROJECTS */
+
+.project-navigation-section {
+    padding: 45px 0 90px;
+    border-top: 1px solid var(--line);
+}
+
+.project-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-navigation-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-light);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.project-navigation-link:hover {
+    border-color: var(--accent);
+    background: #302438;
+}
+
+.project-navigation-link.previous {
+    justify-content: flex-start;
+}
+
+.project-navigation-link.next {
+    text-align: right;
+}
+
+.project-navigation-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.project-navigation-link strong {
+    display: block;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.project-navigation-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 34px;
+    line-height: 1;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .intro-layout,
+    .technical-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .technical-panel {
+        margin-top: 0;
+    }
+
+    .code-disclosure {
+        grid-column: 1;
+    }
+
+    .more-contributions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-art {
+        opacity: .35;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .container {
+        width: min(calc(100% - 32px), var(--max-width));
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero-content {
+        padding: 55px 0 70px;
+    }
+
+    .back-link {
+        margin-bottom: 55px;
+    }
+
+    .hero h1 {
+        font-size: clamp(54px, 13vw, 79px);
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .record-art {
+        width: 85vw;
+        right: -42%;
+        top: 22%;
+        opacity: .25;
+    }
+
+    .gameplay-steps,
+    .featured-grid,
+    .more-contributions,
+    .project-navigation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section,
+    .technical-section {
+        padding: 60px 0;
+    }
+
+    .feature {
+        min-height: 230px;
+        padding: 26px;
+    }
+
+    .feature-label {
+        margin-bottom: 25px;
+    }
+
+    .gameplay-step {
+        padding: 25px;
+    }
+
+    .step-number {
+        margin-bottom: 24px;
+    }
+
+    .technical-panel {
+        padding: 18px;
+    }
+
+    .code-disclosure summary {
+        padding: 17px;
+    }
+
+    .code-disclosure pre {
+        padding: 16px;
+    }
+
+    .code-disclosure code {
+        font-size: 12px;
+    }
+
+    .project-navigation-link {
+        padding: 24px;
+    }
+}
+
+/* TOUCH */
+
+@media (hover: none) {
+    .project-navigation-link:active,
+    .hero-link:active {
+        filter: brightness(1.15);
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .project-navigation-link {
+        transition: none;
+    }
+}
+</style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html#home">Yasmin Adas</a>
 
-            <div>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+<!-- NAVIGATION -->
 
-    <main>
-        <section class="project-detail">
+<header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
 
-            <a class="back-link" href="index.html#projects">
-                ← Back to Projects
+        <a href="index.html#home" class="brand">
+            Yasmin<span>.</span>Adas
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="record-art" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+
+        <a class="back-link" href="index.html#projects">
+            ← Back to all projects
+        </a>
+
+        <div class="eyebrow">
+            Solo Game Project
+        </div>
+
+        <h1>Lost<br>Tracks</h1>
+
+        <div class="project-meta" aria-label="Project details">
+            <span>Solo project</span>
+            <span>10 weeks</span>
+            <span>Unity</span>
+            <span>C#</span>
+        </div>
+
+        <p class="hero-description">
+            Explore a town where music has disappeared,
+            take on three different music challenges,
+            and help its residents get their music back.
+        </p>
+
+        <div class="hero-actions">
+            <a class="hero-link" href="#my-work">
+                Explore my work
+                <span class="link-arrow" aria-hidden="true">↓</span>
             </a>
+        </div>
 
-            <h1>Lost Tracks</h1>
+    </div>
+</section>
 
-            <p class="project-subtitle">
-                Solo Game Programmer · Unity · C#
+<!-- ABOUT -->
+
+<section class="section">
+    <div class="container intro-layout">
+
+        <div>
+            <div class="eyebrow">01 / The Game</div>
+            <h2>A Town Without Music</h2>
+        </div>
+
+        <div>
+            <p>
+                Players can recover R&amp;B, rock and pop tracks
+                through challenges around the town. The collected
+                music and other items are used to complete quests
+                for its residents.
             </p>
 
-            <div class="losttracks-hero">
-                <span>UNITY · C# · SOLO PROJECT</span>
-                <strong>Lost Tracks</strong>
-                <span>GAMEPLAY & SYSTEMS PROGRAMMING</span>
+            <p>
+                I created Lost Tracks as my specialization project
+                at Futuregames, developing the gameplay,
+                interactions, UI and progression in C#.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- GAMEPLAY LOOP -->
+
+<section class="section gameplay-section">
+    <div class="container">
+
+        <div class="eyebrow">02 / Gameplay</div>
+        <h2>Find It. Play It. Bring It Back.</h2>
+
+        <div class="gameplay-steps">
+
+            <article class="gameplay-step">
+                <span class="step-number">01 / EXPLORE</span>
+                <h3>Meet the Town</h3>
+                <p>
+                    Explore the environment and interact
+                    with NPCs to discover what they need.
+                </p>
+            </article>
+
+            <article class="gameplay-step">
+                <span class="step-number">02 / PLAY</span>
+                <h3>Take on Challenges</h3>
+                <p>
+                    Complete timing, note collection and
+                    memory challenges to recover music tracks.
+                </p>
+            </article>
+
+            <article class="gameplay-step">
+                <span class="step-number">03 / DELIVER</span>
+                <h3>Help the Residents</h3>
+                <p>
+                    Use collected music tracks and items
+                    to complete quests and progress
+                    through the game.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- MY WORK -->
+
+<section class="section" id="my-work">
+    <div class="container">
+
+        <div class="eyebrow">03 / My Work</div>
+        <h2>What I Built</h2>
+
+        <div class="featured-grid">
+
+            <article class="feature">
+                <span class="feature-label">
+                    01 / QUESTS &amp; PROGRESSION
+                </span>
+
+                <h3>Quest System</h3>
+
+                <p>
+                    I built a QuestManager for three questlines:
+                    the club, supermarket and school. It handles
+                    objectives, item deliveries and quest progression
+                    as players complete challenges.
+                </p>
+            </article>
+
+            <article class="feature">
+                <span class="feature-label">
+                    02 / GAMEPLAY PROGRAMMING
+                </span>
+
+                <h3>Three Music Challenges</h3>
+
+                <p>
+                    I programmed three music minigames: Timing,
+                    Note Collection and Memory. Each has its
+                    own gameplay mechanics and completion conditions,
+                    with results passed back to the quest system
+                    to update player progression.
+                </p>
+            </article>
+
+        </div>
+
+        <div class="more-contributions">
+
+            <article class="contribution">
+                <span class="contribution-label">
+                    03 / INTERACTION
+                </span>
+
+                <h3>NPCs &amp; Dialogue</h3>
+
+                <p>
+                    I programmed NPC interactions with a dialogue
+                    system that displays conversations and lets
+                    players start music challenges. The dialogue
+                    UI works alongside the quest system to
+                    support player progression.
+                </p>
+            </article>
+
+            <article class="contribution">
+                <span class="contribution-label">
+                    04 / INVENTORY
+                </span>
+
+                <h3>Items &amp; Music Tracks</h3>
+
+                <p>
+                    I built an inventory system that tracks
+                    collected music tracks and items.
+                    NPC interactions check the inventory
+                    when players deliver requested items,
+                    and QuestManager updates their progress.
+                </p>
+            </article>
+
+            <article class="contribution">
+                <span class="contribution-label">
+                    05 / UI PROGRAMMING
+                </span>
+
+                <h3>ActionStack Menus</h3>
+
+                <p>
+                    I built a stack-based UI system to manage
+                    transitions between gameplay, pause,
+                    settings and the main menu. It keeps track
+                    of the previous screen so players can return
+                    without losing their place.
+                </p>
+            </article>
+
+            <article class="contribution">
+                <span class="contribution-label">
+                    06 / AUDIO
+                </span>
+
+                <h3>Music &amp; Transitions</h3>
+
+                <p>
+                    I implemented an audio system that manages
+                    music playback and smooth transitions between
+                    exploration and minigames. Music fades out
+                    when entering a challenge and fades back in
+                    when returning to exploration.
+                </p>
+            </article>
+
+            <article class="contribution">
+                <span class="contribution-label">
+                    07 / SYSTEMS
+                </span>
+
+                <h3>Gameplay Communication</h3>
+
+                <p>
+                    I used C# events to connect the gameplay
+                    systems. When a player completes a minigame
+                    or delivers an item, the relevant systems
+                    are notified so quest progression and UI
+                    can update.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- QUEST MANAGER CODE -->
+
+<section class="technical-section" id="quest-code">
+    <div class="container technical-layout">
+
+        <div class="technical-description">
+
+            <div class="eyebrow">
+                04 / Behind the Code
             </div>
 
-            <div class="project-detail-content">
+            <h2>Connecting Challenges to Quests</h2>
 
-                <!-- About -->
-                <section>
-                    <h2>About the Game</h2>
+            <p>
+                QuestManager listens for challenge completion
+                events. When a minigame is completed, it checks
+                active quests for the matching objective and
+                updates that objective.
+            </p>
 
-                    <p>
-                        Lost Tracks is a third-person exploration
-                        game set in a stylized town where music
-                        has disappeared.
-                    </p>
+            <p>
+                The quest update event then notifies
+                other systems, including the quest UI.
+            </p>
 
-                    <p>
-                        Players restore music by interacting
-                        with NPCs, completing challenges,
-                        collecting music tracks and delivering
-                        requested items.
-                    </p>
+        </div>
 
-                    <p>
-                        Developed as an individual Unity
-                        project, Lost Tracks allowed me to
-                        design and implement the complete
-                        gameplay architecture in C#.
-                    </p>
-                </section>
+        <div class="technical-panel">
 
-                <!-- Contributions -->
-                <section>
-                    <h2>My Contributions</h2>
-
-                    <p>
-                        As the sole programmer, I designed
-                        and implemented the gameplay systems,
-                        interactions, challenges, UI,
-                        progression and audio management.
-                    </p>
-
-                    <div class="contribution-list">
-
-                        <div class="contribution-item">
-                            <h3>Quest System</h3>
-                            <p>
-                                Developed an objective-based
-                                quest system supporting
-                                multiple quests, progression
-                                states and different
-                                objective types.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>NPC Interaction & Dialogue</h3>
-                            <p>
-                                Implemented an interaction
-                                system allowing players to
-                                communicate with NPCs,
-                                collect items and activate
-                                challenges.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Inventory System</h3>
-                            <p>
-                                Built an inventory system for
-                                collecting and managing music
-                                tracks and items, with
-                                integration into NPC
-                                deliveries and quest
-                                objectives.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Three Gameplay Challenges</h3>
-                            <p>
-                                Implemented three different
-                                minigames: a timing challenge,
-                                a note collection challenge
-                                and a memory sequence
-                                challenge.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Event-Driven Architecture</h3>
-                            <p>
-                                Used event-based communication
-                                to coordinate gameplay updates
-                                between systems, reducing
-                                unnecessary dependencies.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>ActionStack Menu System</h3>
-                            <p>
-                                Developed a stack-based
-                                menu architecture to manage
-                                gameplay, main menu, pause
-                                and settings states.
-                            </p>
-                        </div>
-
-                        <div class="contribution-item">
-                            <h3>Audio Management</h3>
-                            <p>
-                                Implemented music and sound
-                                effects management, including
-                                transitions between gameplay
-                                and challenge music using
-                                audio fades.
-                            </p>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Technical Highlights -->
-                <section>
-                    <h2>Technical Highlights</h2>
-
-                    <h3>Event-Driven Quest Progression</h3>
-
-                    <p>
-                        Quest progression is connected to
-                        gameplay events rather than relying
-                        entirely on direct communication
-                        between systems.
-                    </p>
-
-                    <p>
-                        When players complete challenges
-                        or deliver requested items, the
-                        relevant quest objectives are
-                        updated and the UI reflects the
-                        current progression.
-                    </p>
-
-                    <h3>Reusable Gameplay Interactions</h3>
-
-                    <p>
-                        I developed a reusable interaction
-                        structure supporting different
-                        gameplay objects and NPCs.
-                    </p>
-
-                    <p>
-                        This allowed different objects
-                        to respond to player interactions
-                        while maintaining their own
-                        behavior.
-                    </p>
-
-                    <h3>Stack-Based Game States</h3>
-
-                    <p>
-                        The ActionStack system manages
-                        transitions between gameplay
-                        and different menu states.
-                    </p>
-
-                    <p>
-                        This structure makes it easier to
-                        control gameplay and UI behavior
-                        during transitions.
-                    </p>
-                </section>
-
-                <!-- Technologies -->
-                <section>
-                    <h2>Technologies</h2>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">Unity</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Gameplay Programming</span>
-                        <span class="tech-tag">Quest Systems</span>
-                        <span class="tech-tag">Inventory</span>
-                        <span class="tech-tag">Event-Driven Architecture</span>
-                        <span class="tech-tag">State Management</span>
-                        <span class="tech-tag">Audio Management</span>
-                        <span class="tech-tag">UI Programming</span>
-                    </div>
-                </section>
-
+            <div class="technical-panel-label">
+                <span>QuestManager.cs</span>
+                <span class="language-tag">C#</span>
             </div>
 
-            <!-- Next Project -->
-            <a class="next-project" href="chaoticshroomhunt.html">
-                <span>NEXT PROJECT →</span>
-                <strong>Chaotic Shroom Hunt</strong>
+            <ul class="technical-points">
+                <li>Event subscription and unsubscription</li>
+                <li>Challenge-specific objective matching</li>
+                <li>Quest progression updates</li>
+                <li>Event-driven UI notifications</li>
+            </ul>
+
+        </div>
+
+        <details class="code-disclosure">
+            <summary>View QuestManager C# Code</summary>
+<pre><code>private void OnEnable()
+{
+    if (challengeCompletedEvent != null)
+        challengeCompletedEvent.OnRaised += HandleChallengeCompleted;
+}
+
+private void OnDisable()
+{
+    if (challengeCompletedEvent != null)
+        challengeCompletedEvent.OnRaised -= HandleChallengeCompleted;
+}
+
+private void HandleChallengeCompleted(ChallengeType challengeType)
+{
+    foreach (Quest quest in activeQuests)
+    {
+        if (quest.state != QuestState.Active) continue;
+
+        foreach (QuestObjective objective in quest.objectives)
+        {
+            if (objective.type == ObjectiveType.CompleteChallenge &amp;&amp;
+                !objective.isCompleted &amp;&amp;
+                objective.requiredChallenge == challengeType)
+            {
+                objective.isCompleted = true;
+                questUpdatedEvent?.Raise(quest);
+                break;
+            }
+        }
+
+        CheckQuestCompletion(quest);
+    }
+}</code></pre>
+        </details>
+
+    </div>
+</section>
+
+<!-- NPC STATE MACHINE CODE -->
+
+<section class="technical-section" id="npc-code">
+    <div class="container technical-layout">
+
+        <div class="technical-description">
+
+            <div class="eyebrow">
+                05 / Behind the Code
+            </div>
+
+            <h2>NPCs with Their Own Quest States</h2>
+
+            <p>
+                Each NPC uses a six-state system to manage
+                conversations, music requests, item deliveries
+                and quest completion.
+            </p>
+
+            <p>
+                The NPC checks what the player has collected,
+                responds with the appropriate dialogue
+                and updates the quest when a requested
+                track or item is delivered.
+            </p>
+
+        </div>
+
+        <div class="technical-panel">
+
+            <div class="technical-panel-label">
+                <span>NPC.cs</span>
+                <span class="language-tag">C#</span>
+            </div>
+
+            <ul class="technical-points">
+                <li>Six-state NPC interaction flow</li>
+                <li>Inventory checks and item deliveries</li>
+                <li>Quest objective updates</li>
+                <li>Dialogue, animation and audio feedback</li>
+            </ul>
+
+        </div>
+
+        <details class="code-disclosure">
+            <summary>View NPC C# Code</summary>
+<pre><code>public enum NPCState
+{
+    Idle,
+    AskedForTrack,
+    WaitingForTrack,
+    AskedForItem,
+    WaitingForItem,
+    Completed
+}
+
+// Selected method from NPC.cs
+private void HandleInteraction(GameObject interactor)
+{
+    if (dialogueUI == null) return;
+
+    Inventory inventory = interactor.GetComponent&lt;Inventory&gt;();
+
+    if (inventory == null) return;
+
+    switch (npcState)
+    {
+        case NPCState.Idle:
+
+            dialogueUI.Show(introText);
+
+            npcState = NPCState.AskedForTrack;
+
+            break;
+
+        case NPCState.AskedForTrack:
+
+            dialogueUI.Show(trackRequestText);
+
+            npcState = NPCState.WaitingForTrack;
+
+            break;
+
+        case NPCState.WaitingForTrack:
+
+            if (inventory.HasTrack(requestedTrack))
+            {
+                inventory.RemoveTrack(requestedTrack);
+
+                dialogueUI.Show(trackSuccessText);
+
+                questManager.CompleteObjective(quest, 1);
+
+                animator.SetBool("isTalking", false);
+                animator.SetTrigger("isDancing");
+
+                AudioManager.Instance?.PlaySFX(deliverySound);
+
+                npcState = NPCState.AskedForItem;
+            }
+            else
+            {
+                dialogueUI.Show(trackRequestText);
+            }
+
+            break;
+
+        case NPCState.AskedForItem:
+
+            dialogueUI.Show(itemRequestText);
+
+            npcState = NPCState.WaitingForItem;
+
+            break;
+
+        case NPCState.WaitingForItem:
+
+            int amount = inventory.GetItemCount(requestedItem);
+
+            if (amount >= requiredItemAmount)
+            {
+                for (int i = 0; i &lt; requiredItemAmount; i++)
+                {
+                    inventory.RemoveItem(requestedItem);
+                }
+
+                dialogueUI.Show(itemSuccessText);
+
+                questManager.HandleItemDelivered(
+                    quest,
+                    requestedItem,
+                    requiredItemAmount);
+
+                AudioManager.Instance?.PlaySFX(deliverySound);
+
+                npcState = NPCState.Completed;
+            }
+            else
+            {
+                dialogueUI.Show(itemRequestText);
+            }
+
+            break;
+
+        case NPCState.Completed:
+
+            dialogueUI.Show(completedText);
+
+            break;
+    }
+}</code></pre>
+        </details>
+
+    </div>
+</section>
+
+<!-- PREVIOUS AND NEXT PROJECTS -->
+
+<section class="project-navigation-section">
+    <div class="container">
+
+        <nav class="project-navigation-grid" aria-label="Project navigation">
+
+            <a
+                href="suboptimal.html"
+                class="project-navigation-link previous"
+            >
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    ←
+                </span>
+
+                <div>
+                    <span class="project-navigation-label">
+                        PREVIOUS PROJECT
+                    </span>
+                    <strong>SUBOPTIMAL</strong>
+                </div>
             </a>
 
-        </section>
-    </main>
+            <a
+                href="thelastflame.html"
+                class="project-navigation-link next"
+            >
+                <div>
+                    <span class="project-navigation-label">
+                        NEXT PROJECT
+                    </span>
+                    <strong>The Last Flame</strong>
+                </div>
+
+                <span class="project-navigation-arrow" aria-hidden="true">
+                    →
+                </span>
+            </a>
+
+        </nav>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container footer-inner">
+
+        <span>
+            Yasmin Adas · Game Programmer
+        </span>
+
+        <a href="index.html#projects">
+            Back to Projects ↑
+        </a>
+
+    </div>
+</footer>
+
 </body>
 </html>
-
